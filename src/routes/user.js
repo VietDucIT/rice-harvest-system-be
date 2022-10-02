@@ -3,7 +3,10 @@ const router = express.Router();
 
 const userController = require("../controllers/UserController");
 
-router.get("/:idOwner/manage-houses", userController.manageHouses);
-router.get("/:idOwner/manage-posts", userController.managePosts);
+router.get("/:id", userController.show);
+router.post("/", userController.add);
+router.post("/:id/modify", userController.modify);
+router.post("/:id/delete", userController.delete);
+// router.get('/:slug', userController.show);
 
 module.exports = router;

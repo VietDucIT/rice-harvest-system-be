@@ -1,13 +1,13 @@
 const { ObjectId } = require("mongodb");
 
-const RiceField = require("../models/RiceField");
+const Account = require("../models/Account");
 
-class RiceFieldController {
-  // [GET] /rice-field/:id
+class AccountController {
+  // [GET] /account/:id
   show(req, res) {
-    RiceField.findById(req.params.id)
-      .then((riceField) => {
-        res.json(riceField).end();
+    Account.findById(req.params.id)
+      .then((account) => {
+        res.json(account).end();
       })
       .catch((err) => {
         res.status(500).end();
@@ -15,14 +15,14 @@ class RiceFieldController {
       });
   }
 
-  // [POST] /rice-field/
+  // [POST] /account/
   add(req, res) {
     // res.json(req.body);
-    const riceField = new RiceField(req.body);
-    riceField._id = new ObjectId().toString();
-    // console.log("Rice Field: ", riceField);
+    const account = new Account(req.body);
+    account._id = new ObjectId().toString();
+    // console.log("Account: ", account);
 
-    riceField
+    account
       .save()
       .then(() => {
         res.sendStatus(200).end();
@@ -33,10 +33,10 @@ class RiceFieldController {
       });
   }
 
-  // [POST] /rice-field/:id/modify
+  // [POST] /account/:id/modify
   modify(req, res) {
     // res.json(req.body);
-    RiceField.updateOne({ _id: req.params.id }, req.body)
+    Account.updateOne({ _id: req.params.id }, req.body)
       .then(() => {
         res.sendStatus(200).end();
       })
@@ -46,11 +46,11 @@ class RiceFieldController {
       });
   }
 
-  // [POST] /rice-field/:id/delete
+  // [POST] /account/:id/delete
   delete(req, res) {
     // res.json(req.body);
     // console.log("Request: ", req.params);
-    RiceField.deleteOne({ _id: req.params.id })
+    Account.deleteOne({ _id: req.params.id })
       .then(() => {
         res.sendStatus(200).end();
       })
@@ -60,18 +60,21 @@ class RiceFieldController {
       });
   }
 
-  // [GET] /rice-field/:idFarmer/list
-  showList(req, res) {
-    // console.log("Request: ", req.params);
-    RiceField.find({ idFarmer: req.params.idFarmer })
-      .then((riceFields) => {
-        res.json(riceFields).end();
+  // [POST] /account/login
+  logIn(req, res) {
+    // console.log("Request: ", req.body);
+    Account.findOne({
+      accountName: req.body.accountName,
+      password: req.body.password,
+    })
+      .then((account) => {
+        res.json(account).end();
       })
       .catch((err) => {
-        res.status(500).end();
+        res.sendStatus(500).end();
         console.log(err);
       });
   }
 }
 
-module.exports = new RiceFieldController();
+module.exports = new AccountController();
