@@ -10,11 +10,10 @@ const User = new Schema(
     gender: { type: Boolean, required: true },
     birthYear: { type: Number, required: true },
     address: { type: String, required: true },
-    phone: { type: String, required: true },
     role: { type: Boolean, required: true },
+    phone: { type: String, required: true }, // userName
+    password: { type: String, required: true },
     // avatar: { type: String, required: true },
-    // userName: { type: String, required: true },
-    // password: { type: String, required: true },
   },
   {
     timestamps: true, // tu dong tao ra 2 field createdAt va updatedAt
