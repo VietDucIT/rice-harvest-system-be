@@ -19,7 +19,7 @@ class RiceBuyingAreaController {
   add(req, res) {
     // res.json(req.body);
     const riceBuyingArea = new RiceBuyingArea(req.body);
-    riceBuyingArea._id = new ObjectId().toString();
+    // riceBuyingArea._id = new ObjectId().toString();
     // console.log("Rice Buying Area: ", riceBuyingArea);
 
     riceBuyingArea

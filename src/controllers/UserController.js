@@ -19,7 +19,7 @@ class UserController {
   add(req, res) {
     // res.json(req.body);
     const user = new User(req.body);
-    user._id = new ObjectId().toString();
+    // user._id = new ObjectId().toString();
     // console.log("User: ", user);
 
     user

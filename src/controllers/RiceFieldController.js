@@ -19,7 +19,7 @@ class RiceFieldController {
   add(req, res) {
     // res.json(req.body);
     const riceField = new RiceField(req.body);
-    riceField._id = new ObjectId().toString();
+    // riceField._id = new ObjectId().toString();
     // console.log("Rice Field: ", riceField);
 
     riceField

@@ -19,7 +19,7 @@ class AccountController {
   add(req, res) {
     // res.json(req.body);
     const account = new Account(req.body);
-    account._id = new ObjectId().toString();
+    // account._id = new ObjectId().toString();
     // console.log("Account: ", account);
 
     account

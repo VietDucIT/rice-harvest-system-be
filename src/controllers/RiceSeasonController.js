@@ -19,7 +19,7 @@ class RiceSeasonController {
   add(req, res) {
     // res.json(req.body);
     const riceSeason = new RiceSeason(req.body);
-    riceSeason._id = new ObjectId().toString();
+    // riceSeason._id = new ObjectId().toString();
     // console.log("Rice Season: ", riceSeason);
 
     riceSeason
