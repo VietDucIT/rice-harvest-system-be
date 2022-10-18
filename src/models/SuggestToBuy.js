@@ -4,16 +4,18 @@ const Schema = mongoose.Schema;
 
 const SuggestToBuy = new Schema(
   {
-    _id: { type: String },
+    // _id: { type: String },
     suggestedPrice: { type: Number, required: true },
-    suggestedTimeEnd: { type: DataTransfer, required: true },
+    suggestedTimeEnd: { type: Date, required: true },
     description: { type: String },
+    status: { type: String },
     traderId: { type: String },
 
-    riceSeasonId: { type: String },
+    riceSeasonId: { type: Schema.Types.ObjectId, ref: "RiceSeason" },
+    traderId: { type: Schema.Types.ObjectId, ref: "Trader" },
   },
   {
-    timestamps: true, // tu dong tao ra 2 field createdAt va updatedAt
+    timestamps: true, // create 2 fields "createdAt" and "updatedAt" automatically
   }
 );
 

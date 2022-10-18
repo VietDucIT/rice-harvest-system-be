@@ -15,6 +15,7 @@ class FarmerController {
   }
 
   // [GET] /farmer/list-by-address
+  // village, commune, town, province
   showByAddress(req, res) {
     // console.log("Request: ", req.params);
     Farmer.find({ address: req.params.address })

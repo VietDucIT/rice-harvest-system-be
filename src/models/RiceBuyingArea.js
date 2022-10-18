@@ -4,15 +4,18 @@ const Schema = mongoose.Schema;
 
 const RiceBuyingArea = new Schema(
   {
-    _id: { type: String },
+    // _id: { type: String },
     name: { type: String, required: true },
-    address: { type: String, required: true },
+    village: { type: String, required: true },
+    commune: { type: String, required: true },
+    town: { type: String, required: true },
+    province: { type: String, required: true },
     description: { type: String },
 
-    traderId: { type: String },
+    traderIds: [{ type: Schema.Types.ObjectId, ref: "Trader" }],
   },
   {
-    timestamps: true, // tu dong tao ra 2 field createdAt va updatedAt
+    timestamps: true, // create 2 fields "createdAt" and "updatedAt" automatically
   }
 );
 

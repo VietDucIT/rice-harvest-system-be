@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const User = new Schema(
+const Trader = new Schema(
   {
     // _id: { type: String },
     name: { type: String, required: true },
@@ -17,10 +17,12 @@ const User = new Schema(
     phone: { type: String, required: true }, // userName
     password: { type: String, required: true },
     // avatar: { type: String, required: true },
+
+    riceBuyingAreaIds: [{ type: Schema.Types.ObjectId, ref: "RiceBuyingArea" }],
   },
   {
     timestamps: true, // create 2 fields "createdAt" and "updatedAt" automatically
   }
 );
 
-module.exports = mongoose.model("User", User);
+module.exports = mongoose.model("Trader", Trader);

@@ -4,13 +4,14 @@ const Schema = mongoose.Schema;
 
 const RicePrice = new Schema(
   {
-    _id: { type: String },
-    rice: { type: String, required: true },
+    // _id: { type: String },
     price: { type: String, required: true },
     date: { type: Date, required: true },
+
+    riceId: { type: Schema.Types.ObjectId, ref: "Rice" },
   },
   {
-    timestamps: true, // tu dong tao ra 2 field createdAt va updatedAt
+    timestamps: true, // create 2 fields "createdAt" and "updatedAt" automatically
   }
 );
 

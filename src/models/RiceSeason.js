@@ -4,26 +4,30 @@ const Schema = mongoose.Schema;
 
 const RiceSeason = new Schema(
   {
-    _id: { type: String },
-    name: { type: String, required: true },
-    rice: { type: String, required: true },
+    // _id: { type: String },
+    seasonName: { type: String, required: true },
+    seasonYear: { type: Number, required: true },
     currentState: { type: String, required: true },
     timeStart: { type: Date, required: true },
     timeEnd: { type: Date },
-    totalRice: { type: Date },
-    suggestToBuys: [
-      {
-        traderId: { type: String, required: true },
-        suggestedPrice: { type: Number, required: true },
-        suggestedTimeEnd: { type: DataTransfer, required: true },
-        description: { type: String },
-      },
-    ],
+    totalRice: { type: Number },
+    description: { type: String },
 
-    riceFieldId: { type: String },
+    // suggestToBuys: [
+    //   {
+    //     traderId: { type: String, required: true },
+    //     suggestedPrice: { type: Number, required: true },
+    //     suggestedTimeEnd: { type: Date, required: true },
+    //     description: { type: String },
+    //     status: { type: String },
+    //   },
+    // ],
+
+    riceFieldId: { type: Schema.Types.ObjectId, ref: "RiceField" },
+    riceId: { type: Schema.Types.ObjectId, ref: "Rice" },
   },
   {
-    timestamps: true, // tu dong tao ra 2 field createdAt va updatedAt
+    timestamps: true, // create 2 fields "createdAt" and "updatedAt" automatically
   }
 );
 
