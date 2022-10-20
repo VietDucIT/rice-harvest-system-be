@@ -20,7 +20,7 @@ class UserController {
     // res.json(req.body);
     const user = new User(req.body);
     // user._id = new ObjectId().toString();
-    // console.log("User: ", user);
+    console.log("User BE: ", user);
 
     user
       .save()

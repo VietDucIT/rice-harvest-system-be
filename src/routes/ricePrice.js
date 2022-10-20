@@ -3,9 +3,7 @@ const router = express.Router();
 
 const ricePriceController = require("../controllers/RicePriceController");
 
-router.get("/rice-price", ricePriceController.show);
-// ???
-// router.post("/rice-price", ricePriceController.add);
+router.get("/", ricePriceController.show);
 // router.get('/:slug', ricePriceController.show);
 
 module.exports = router;
