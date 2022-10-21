@@ -7,7 +7,8 @@ const RicePrice = new Schema(
     // _id: { type: String },
     rice: { type: String, required: true },
     price: { type: String, required: true },
-    date: { type: Date },
+    date: { type: String },
+    isDeleted: { type: Boolean },
 
     // riceId: { type: Schema.Types.ObjectId, ref: "Rice" },
   },
