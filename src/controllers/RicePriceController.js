@@ -25,6 +25,20 @@ class RiceController {
     // res.json({ ok: "ok" }).end();
   }
 
+  // [GET] /rice-price/prediction
+  predict(req, res) {
+    // FIND PREDICTION, NEED TO ADD A FIELD ???
+    RicePrice.find({})
+      .then((rice) => {
+        // console.log(rice);
+        res.json(rice).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
+
   // [GET] /rice-price/check
   check(req, res) {
     const currentTime = new Date();

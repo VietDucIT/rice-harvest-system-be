@@ -15,6 +15,18 @@ class UserController {
       });
   }
 
+  // [GET] /user/checkUniquePhone
+  checkPhone(req, res) {
+    User.findOne({ phone: req.params.phone })
+      .then((user) => {
+        res.send(true).end();
+      })
+      .catch((err) => {
+        res.send(false).end();
+        console.log(err);
+      });
+  }
+
   // [POST] /user/
   add(req, res) {
     // res.json(req.body);
