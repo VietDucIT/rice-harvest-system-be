@@ -8,7 +8,7 @@ const User = new Schema(
     name: { type: String },
     nickname: { type: String },
     gender: { type: Number },
-    birthYear: { type: Number },
+    birthYear: { type: String },
     village: { type: String },
     commune: { type: String },
     town: { type: String },

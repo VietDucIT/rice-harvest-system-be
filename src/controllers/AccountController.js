@@ -33,7 +33,7 @@ class AccountController {
       });
   }
 
-  // [POST] /account/:id/modify
+  // [PUT] /account/:id
   modify(req, res) {
     // res.json(req.body);
     Account.updateOne({ _id: req.params.id }, req.body)
@@ -46,7 +46,7 @@ class AccountController {
       });
   }
 
-  // [POST] /account/:id/delete
+  // [DELETE] /account/:id
   delete(req, res) {
     // res.json(req.body);
     // console.log("Request: ", req.params);

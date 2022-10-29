@@ -17,12 +17,12 @@ app.use(morgan("combined"));
 // middleware
 app.use(express.urlencoded({ extended: true }));
 
-// var whitelist = ["http://localhost:19006"];
-var whitelist = [
-  "http://192.168.0.107:19000",
-  "http://localhost:19006",
-  "http://localhost:3000",
-];
+// var whitelist = [
+//   "http://192.168.0.106:19000",
+//   "http://192.168.0.106:19006",
+//   "http://localhost:19000",
+//   "http://192.168.0.103",
+// ];
 // var corsOptions = {
 //   origin: function (origin, callback) {
 //     console.log(origin);

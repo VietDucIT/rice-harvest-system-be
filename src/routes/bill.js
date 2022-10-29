@@ -5,9 +5,8 @@ const billController = require("../controllers/BillController");
 
 router.get("/:id", billController.show);
 router.post("/", billController.add);
-router.post("/:id/modify", billController.modify);
-router.post("/:id/delete", billController.delete);
-// router.get("/:id/list", billController.showList);
+router.put("/:id", billController.modify);
+router.get("/:id/list", billController.showList);
 // router.get(
 //   "/:id/list-for-rice-season",
 //   billController.showListForRiceSeason

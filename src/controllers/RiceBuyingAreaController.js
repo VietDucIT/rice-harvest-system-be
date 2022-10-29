@@ -33,7 +33,7 @@ class RiceBuyingAreaController {
       });
   }
 
-  // [POST] /rice-buying-area/:id/modify
+  // [PUT] /rice-buying-area/:id
   modify(req, res) {
     // res.json(req.body);
     RiceBuyingArea.updateOne({ _id: req.params.id }, req.body)
@@ -46,7 +46,7 @@ class RiceBuyingAreaController {
       });
   }
 
-  // [POST] /rice-buying-area/:id/delete
+  // [DELETE] /rice-buying-area/:id
   delete(req, res) {
     // res.json(req.body);
     // console.log("Request: ", req.params);

@@ -5,8 +5,8 @@ const suggestToBuyController = require("../controllers/SuggestToBuyController");
 
 router.get("/:id", suggestToBuyController.show);
 router.post("/", suggestToBuyController.add);
-router.post("/:id/modify", suggestToBuyController.modify);
-router.post("/:id/delete", suggestToBuyController.delete);
+router.put("/:id", suggestToBuyController.modify);
+router.delete("/:id", suggestToBuyController.delete);
 router.get("/:id/list", suggestToBuyController.showList);
 router.get(
   "/:id/list-for-rice-season",

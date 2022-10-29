@@ -1,13 +1,13 @@
 const { ObjectId } = require("mongodb");
 
-const Connection = require("../models/Connection");
+const Notification = require("../models/Notification");
 
-class ConnectionController {
-  // [GET] /connection/:id
+class NotificationController {
+  // [GET] /notification/:id
   show(req, res) {
-    Connection.findById(req.params.id)
-      .then((connection) => {
-        res.json(connection).end();
+    Notification.findById(req.params.id)
+      .then((notification) => {
+        res.json(notification).end();
       })
       .catch((err) => {
         res.status(500).end();
@@ -15,14 +15,14 @@ class ConnectionController {
       });
   }
 
-  // [POST] /connection/
+  // [POST] /notification/
   add(req, res) {
     // res.json(req.body);
-    const connection = new Connection(req.body);
-    // connection._id = new ObjectId().toString();
-    // console.log("Connection: ", connection);
+    const notification = new Notification(req.body);
+    // notification._id = new ObjectId().toString();
+    // console.log("Notification: ", notification);
 
-    connection
+    notification
       .save()
       .then(() => {
         res.sendStatus(200).end();
@@ -33,10 +33,10 @@ class ConnectionController {
       });
   }
 
-  // [PUT] /connection/:id
+  // [PUT] /notification/:id
   // modify(req, res) {
   //   // res.json(req.body);
-  //   Connection.updateOne({ _id: req.params.id }, req.body)
+  //   Notification.updateOne({ _id: req.params.id }, req.body)
   //     .then(() => {
   //       res.sendStatus(200).end();
   //     })
@@ -46,11 +46,11 @@ class ConnectionController {
   //     });
   // }
 
-  // [DELETE] /connection/:id
+  // [DELETE] /notification/:id
   delete(req, res) {
     // res.json(req.body);
     // console.log("Request: ", req.params);
-    Connection.deleteOne({ _id: req.params.id })
+    Notification.deleteOne({ _id: req.params.id })
       .then(() => {
         res.sendStatus(200).end();
       })
@@ -60,12 +60,12 @@ class ConnectionController {
       });
   }
 
-  // [GET] /connection/:idUser/list
+  // [GET] /notification/:idUser/list
   showList(req, res) {
     // console.log("Request: ", req.params);
-    Connection.find({ idUser: req.params.idUser })
-      .then((connections) => {
-        res.json(connections).end();
+    Notification.find({ idUser: req.params.idUser })
+      .then((notifications) => {
+        res.json(notifications).end();
       })
       .catch((err) => {
         res.status(500).end();
@@ -74,4 +74,4 @@ class ConnectionController {
   }
 }
 
-module.exports = new ConnectionController();
+module.exports = new NotificationController();

@@ -37,7 +37,7 @@ class UserController {
     user
       .save()
       .then(() => {
-        res.sendStatus(200).end();
+        res.send(user._id).end();
       })
       .catch((err) => {
         res.status(500).end();
@@ -45,7 +45,7 @@ class UserController {
       });
   }
 
-  // [POST] /user/:id/modify
+  // [PUT] /user/:id
   modify(req, res) {
     // res.json(req.body);
     User.updateOne({ _id: req.params.id }, req.body)
@@ -58,7 +58,7 @@ class UserController {
       });
   }
 
-  // [POST] /user/:id/delete
+  // [DELETE] /user/:id
   delete(req, res) {
     // res.json(req.body);
     // console.log("Request: ", req.params);

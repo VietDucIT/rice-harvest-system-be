@@ -5,13 +5,9 @@ const connecttionController = require("../controllers/ConnectionController");
 
 router.get("/:id", connecttionController.show);
 router.post("/", connecttionController.add);
-router.post("/:id/modify", connecttionController.modify);
-router.post("/:id/delete", connecttionController.delete);
-// router.get("/:id/list", connecttionController.showList);
-// router.get(
-//   "/:id/list-for-rice-season",
-//   connecttionController.showListForRiceSeason
-// );
+// router.put("/:id", connecttionController.modify);
+router.delete("/:id", connecttionController.delete);
+router.get("/:id/list", connecttionController.showList);
 // router.get('/:slug', connecttionController.show);
 
 module.exports = router;

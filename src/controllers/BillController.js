@@ -33,7 +33,7 @@ class BillController {
       });
   }
 
-  // [POST] /bill/:id/modify
+  // [PUT] /bill/:id
   modify(req, res) {
     // res.json(req.body);
     Bill.updateOne({ _id: req.params.id }, req.body)
@@ -46,32 +46,32 @@ class BillController {
       });
   }
 
-  // [POST] /bill/:id/delete
-  delete(req, res) {
-    // res.json(req.body);
-    // console.log("Request: ", req.params);
-    Bill.deleteOne({ _id: req.params.id })
-      .then(() => {
-        res.sendStatus(200).end();
-      })
-      .catch((err) => {
-        res.status(500).end();
-        console.log(err);
-      });
-  }
-
-  // [GET] /bill/:idTrader/list
-  // showList(req, res) {
+  // [DELETE] /bill/:id
+  // delete(req, res) {
+  //   // res.json(req.body);
   //   // console.log("Request: ", req.params);
-  //   Bill.find({ idTrader: req.params.idTrader })
-  //     .then((bills) => {
-  //       res.json(bills).end();
+  //   Bill.deleteOne({ _id: req.params.id })
+  //     .then(() => {
+  //       res.sendStatus(200).end();
   //     })
   //     .catch((err) => {
   //       res.status(500).end();
   //       console.log(err);
   //     });
   // }
+
+  // [GET] /bill/:idUser/list
+  showList(req, res) {
+    // console.log("Request: ", req.params);
+    Bill.find({ idUser: req.params.idUser })
+      .then((bills) => {
+        res.json(bills).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
 
   // [GET] /bill//:idRiceSeason/list-for-rice-season
   // showListForRiceSeason(req, res) {

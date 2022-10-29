@@ -2,6 +2,7 @@
 const billRouter = require("./bill");
 const connectionRouter = require("./connection");
 const farmerRouter = require("./farmer");
+const notificationRouter = require("./notification");
 const riceRouter = require("./rice");
 const riceBuyingAreaRouter = require("./riceBuyingArea");
 const riceFieldRouter = require("./riceField");
@@ -16,6 +17,7 @@ function route(app) {
   app.use("/bill", billRouter);
   app.use("/connection", connectionRouter);
   app.use("/farmer", farmerRouter);
+  app.use("/notification", notificationRouter);
   app.use("/rice", riceRouter);
   app.use("/rice-buying-area", riceBuyingAreaRouter);
   app.use("/rice-field", riceFieldRouter);

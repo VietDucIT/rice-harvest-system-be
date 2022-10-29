@@ -5,8 +5,8 @@ const riceBuyingAreaController = require("../controllers/RiceBuyingAreaControlle
 
 router.get("/:id", riceBuyingAreaController.show);
 router.post("/", riceBuyingAreaController.add);
-router.post("/:id/modify", riceBuyingAreaController.modify);
-router.post("/:id/delete", riceBuyingAreaController.delete);
+router.put("/:id", riceBuyingAreaController.modify);
+router.delete("/:id", riceBuyingAreaController.delete);
 router.get("/:id/list", riceBuyingAreaController.showList);
 // router.get('/:slug', riceBuyingAreaController.show);
 

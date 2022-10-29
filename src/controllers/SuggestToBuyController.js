@@ -33,7 +33,7 @@ class SuggestToBuyController {
       });
   }
 
-  // [POST] /suggest-to-buy/:id/modify
+  // [PUT] /suggest-to-buy/:id
   modify(req, res) {
     // res.json(req.body);
     SuggestToBuy.updateOne({ _id: req.params.id }, req.body)
@@ -46,7 +46,7 @@ class SuggestToBuyController {
       });
   }
 
-  // [POST] /suggest-to-buy/:id/delete
+  // [DELETE] /suggest-to-buy/:id
   delete(req, res) {
     // res.json(req.body);
     // console.log("Request: ", req.params);

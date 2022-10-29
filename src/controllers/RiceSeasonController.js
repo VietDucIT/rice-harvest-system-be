@@ -18,9 +18,10 @@ class RiceSeasonController {
   // [POST] /rice-season/
   add(req, res) {
     // res.json(req.body);
+    console.log("Rice Season before: ", riceSeason);
     const riceSeason = new RiceSeason(req.body);
     // riceSeason._id = new ObjectId().toString();
-    // console.log("Rice Season: ", riceSeason);
+    console.log("Rice Season after: ", riceSeason);
 
     riceSeason
       .save()
@@ -33,7 +34,7 @@ class RiceSeasonController {
       });
   }
 
-  // [POST] /rice-season/:id/modify
+  // [PUT] /rice-season/:id
   modify(req, res) {
     // res.json(req.body);
     RiceSeason.updateOne({ _id: req.params.id }, req.body)
@@ -46,7 +47,7 @@ class RiceSeasonController {
       });
   }
 
-  // [POST] /rice-season/:id/delete
+  // [DELETE] /rice-season/:id
   delete(req, res) {
     // res.json(req.body);
     // console.log("Request: ", req.params);

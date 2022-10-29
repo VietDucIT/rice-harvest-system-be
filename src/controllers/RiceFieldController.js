@@ -33,7 +33,7 @@ class RiceFieldController {
       });
   }
 
-  // [POST] /rice-field/:id/modify
+  // [PUT] /rice-field/:id
   modify(req, res) {
     // res.json(req.body);
     RiceField.updateOne({ _id: req.params.id }, req.body)
@@ -46,7 +46,7 @@ class RiceFieldController {
       });
   }
 
-  // [POST] /rice-field/:id/delete
+  // [DELETE] /rice-field/:id
   delete(req, res) {
     // res.json(req.body);
     // console.log("Request: ", req.params);
