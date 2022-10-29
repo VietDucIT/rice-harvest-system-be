@@ -63,7 +63,7 @@ class RiceFieldController {
   // [GET] /rice-field/:idFarmer/list
   showList(req, res) {
     // console.log("Request: ", req.params);
-    RiceField.find({ idFarmer: req.params.idFarmer })
+    RiceField.find({ farmerId: req.params.idFarmer })
       .then((riceFields) => {
         res.json(riceFields).end();
       })

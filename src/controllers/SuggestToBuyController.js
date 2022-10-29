@@ -63,7 +63,7 @@ class SuggestToBuyController {
   // [GET] /suggest-to-buy/:idTrader/list
   showList(req, res) {
     // console.log("Request: ", req.params);
-    SuggestToBuy.find({ idTrader: req.params.idTrader })
+    SuggestToBuy.find({ traderId: req.params.idTrader })
       .then((suggestToBuys) => {
         res.json(suggestToBuys).end();
       })

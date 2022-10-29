@@ -64,7 +64,7 @@ class RiceSeasonController {
   // [GET] /rice-season/:idFarmer/list
   showList(req, res) {
     // console.log("Request: ", req.params);
-    RiceSeason.find({ idFarmer: req.params.idFarmer }) // idFarmer of idRiceField
+    RiceSeason.find({ farmerId: req.params.idFarmer }) // idFarmer of idRiceField
       .then((riceSeasons) => {
         res.json(riceSeasons).end();
       })

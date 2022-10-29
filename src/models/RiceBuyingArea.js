@@ -12,7 +12,7 @@ const RiceBuyingArea = new Schema(
     province: { type: String, required: true },
     description: { type: String },
 
-    traderIds: [{ type: Schema.Types.ObjectId, ref: "Trader" }],
+    traderId: { type: Schema.Types.ObjectId, ref: "Trader" },
   },
   {
     timestamps: true, // create 2 fields "createdAt" and "updatedAt" automatically

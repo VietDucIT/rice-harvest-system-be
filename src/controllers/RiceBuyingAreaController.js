@@ -63,7 +63,7 @@ class RiceBuyingAreaController {
   // [GET] /rice-buying-area/:idTrader/list
   showList(req, res) {
     // console.log("Request: ", req.params);
-    RiceBuyingArea.find({ idTrader: req.params.idTrader })
+    RiceBuyingArea.find({ traderId: req.params.idTrader })
       .then((riceBuyingAreas) => {
         res.json(riceBuyingAreas).end();
       })
