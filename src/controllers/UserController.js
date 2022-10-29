@@ -74,7 +74,7 @@ class UserController {
 
   // [POST] /user/login
   logIn(req, res) {
-    // console.log("Request: ", req.body);
+    // console.log("Request from: ", req.ip);
     User.findOne({
       phone: req.body.phone,
       password: req.body.password,

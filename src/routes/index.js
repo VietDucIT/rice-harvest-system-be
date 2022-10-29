@@ -1,4 +1,3 @@
-// const accountRouter = require("./account");
 const billRouter = require("./bill");
 const connectionRouter = require("./connection");
 const farmerRouter = require("./farmer");
@@ -13,7 +12,6 @@ const traderRouter = require("./trader");
 const userRouter = require("./user");
 
 function route(app) {
-  // app.use("/account", accountRouter);
   app.use("/bill", billRouter);
   app.use("/connection", connectionRouter);
   app.use("/farmer", farmerRouter);

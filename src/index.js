@@ -17,28 +17,17 @@ app.use(morgan("combined"));
 // middleware
 app.use(express.urlencoded({ extended: true }));
 
-// var whitelist = [
-//   "http://192.168.0.106:19000",
-//   "http://192.168.0.106:19006",
-//   "http://localhost:19000",
-//   "http://192.168.0.103",
-// ];
-// var corsOptions = {
-//   origin: function (origin, callback) {
-//     console.log(origin);
-//     if (whitelist.indexOf(origin) !== -1) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("Not allowed by CORS"));
-//     }
-//   },
-// };
-// var corsOptions = {
-//   origin: "http://localhost:19006",
-//   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-// };
-
-// app.use(cors(corsOptions));
+var whitelist = ["http://192.168.0.103"];
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (whitelist.indexOf(req.header("Origin")) !== -1) {
+    corsOptions = { origin: true };
+  } else {
+    corsOptions = { origin: false };
+  }
+  callback(null, corsOptions);
+};
+app.use(cors(corsOptionsDelegate));
 
 app.use(express.json());
 
