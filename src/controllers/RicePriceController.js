@@ -27,16 +27,39 @@ class RiceController {
 
   // [GET] /rice-price/prediction
   predict(req, res) {
-    // FIND PREDICTION, NEED TO ADD A FIELD ???
-    RicePrice.find({})
-      .then((rice) => {
-        // console.log(rice);
-        res.json(rice).end();
-      })
-      .catch((err) => {
-        res.status(500).end();
-        console.log(err);
-      });
+    // FIND PREDICTION, NEED TO ADD A FIELD TO SCHEMA ???
+    console.log("Get prediction");
+
+    let { PythonShell } = require("python-shell");
+    var options = {
+      // scriptPath: "src/services/",
+      args: [req.query.firstname, req.query.lastname],
+    };
+
+    PythonShell.run("process.py", options, function (err, data) {
+      if (err) res.send(err).end();
+      console.log(data.toString());
+
+      res.send(data.toString()).end();
+    });
+
+    // var spawn = require("child_process").spawn;
+    // //E.g : http://localhost:3000/name?firstname=van&lastname=nghia
+    // var process = spawn("python", ["../process.py", req.query.firstname]);
+    // console.log(process.stdout);
+    // process.stdout.on("data", (data) => {
+    //   res.send(data.toString()).end();
+    // });
+
+    // RicePrice.find({})
+    //   .then((rice) => {
+    //     // console.log(rice);
+    //     res.json(rice).end();
+    //   })
+    //   .catch((err) => {
+    //     res.status(500).end();
+    //     console.log(err);
+    //   });
   }
 
   // [GET] /rice-price/check

@@ -19,7 +19,7 @@ class SuggestToBuyController {
   add(req, res) {
     // res.json(req.body);
     const suggestToBuy = new SuggestToBuy(req.body);
-    // suggestToBuy._id = new ObjectId().toString();
+    suggestToBuy.traderId = new ObjectId(suggestToBuy.idTrader);
     // console.log("Suggest To Buy: ", suggestToBuy);
 
     suggestToBuy

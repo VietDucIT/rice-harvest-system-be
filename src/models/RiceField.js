@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const RiceField = new Schema(
   {
     // _id: { type: String },
+    name: { type: String },
     village: { type: String, required: true },
     commune: { type: String, required: true },
     town: { type: String, required: true },
@@ -47,7 +48,7 @@ const RiceField = new Schema(
     //   },
     // ],
 
-    farmerId: { type: Schema.Types.ObjectId, ref: "Farmer" },
+    // farmerId: { type: Schema.Types.ObjectId, ref: "Farmer" },
   },
   {
     timestamps: true, // create 2 fields "createdAt" and "updatedAt" automatically

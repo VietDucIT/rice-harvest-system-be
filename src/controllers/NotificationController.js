@@ -19,7 +19,7 @@ class NotificationController {
   add(req, res) {
     // res.json(req.body);
     const notification = new Notification(req.body);
-    // notification._id = new ObjectId().toString();
+    notification.userId = new ObjectId(notification.idUser);
     // console.log("Notification: ", notification);
 
     notification

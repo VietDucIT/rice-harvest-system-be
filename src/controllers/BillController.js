@@ -19,7 +19,7 @@ class BillController {
   add(req, res) {
     // res.json(req.body);
     const bill = new Bill(req.body);
-    // bill._id = new ObjectId().toString();
+    bill.suggestToBuyId = new ObjectId(bill.suggestToBuyId);
     // console.log("Bill: ", bill);
 
     bill
@@ -63,24 +63,14 @@ class BillController {
   // [GET] /bill/:idUser/list
   showList(req, res) {
     // console.log("Request: ", req.params);
-    // Bill.find({ idUser: req.params.idUser })
-    //   .then((bills) => {
-    //     res.json(bills).end();
-    //   })
-    //   .catch((err) => {
-    //     res.status(500).end();
-    //     console.log(err);
-    //   });
-    var spawn = require("child_process").spawn;
-
-    // E.g : http://localhost:3000/name?firstname=van&lastname=nghia
-    var process = spawn("python", ["../services/process.py", req.query.name]);
-    process.stdout.on("data", function (data) {
-      console.log("Hehe", data.toString());
-
-      // res.send(data.toString()).end();
-      res.send("data.toString()").end();
-    });
+    Bill.find({ idUser: req.params.idUser })
+      .then((bills) => {
+        res.json(bills).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
   }
 
   // [GET] /bill//:idRiceSeason/list-for-rice-season

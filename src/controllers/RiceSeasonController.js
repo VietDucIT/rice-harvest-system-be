@@ -20,7 +20,7 @@ class RiceSeasonController {
     // res.json(req.body);
     console.log("Rice Season before: ", riceSeason);
     const riceSeason = new RiceSeason(req.body);
-    // riceSeason._id = new ObjectId().toString();
+    riceSeason.riceFieldId = new ObjectId(riceSeason.idRiceField);
     console.log("Rice Season after: ", riceSeason);
 
     riceSeason

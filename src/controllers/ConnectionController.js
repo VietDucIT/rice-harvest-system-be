@@ -19,7 +19,8 @@ class ConnectionController {
   add(req, res) {
     // res.json(req.body);
     const connection = new Connection(req.body);
-    // connection._id = new ObjectId().toString();
+    connection.farmerId = new ObjectId(connection.idFarmer);
+    connection.traderId = new ObjectId(connection.idTrader);
     // console.log("Connection: ", connection);
 
     connection
