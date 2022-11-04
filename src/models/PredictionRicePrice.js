@@ -2,22 +2,18 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const RicePrice = new Schema(
+const PredictionRicePrice = new Schema(
   {
     // _id: { type: String },
     rice: { type: String, required: true },
-    price: { type: String },
     min: { type: Number },
     max: { type: Number },
     average: { type: Number },
     date: { type: String },
-    isDeleted: { type: Boolean },
-
-    // riceId: { type: Schema.Types.ObjectId, ref: "Rice" },
   },
   {
     timestamps: true, // create 2 fields "createdAt" and "updatedAt" automatically
   }
 );
 
-module.exports = mongoose.model("RicePrice", RicePrice);
+module.exports = mongoose.model("PredictionRicePrice", PredictionRicePrice);

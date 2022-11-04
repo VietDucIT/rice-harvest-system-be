@@ -21,7 +21,8 @@
     "python-shell": "^3.0.1",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
-    "sys": "^0.0.1"
+    "sys": "^0.0.1",
+    "timeseries-analysis": "^1.0.12"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
