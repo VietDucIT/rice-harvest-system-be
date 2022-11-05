@@ -5,7 +5,7 @@ const ricePriceController = require("../controllers/RicePriceController");
 
 router.get("/", ricePriceController.show);
 router.get("/prediction", ricePriceController.predict);
-router.get("/check", ricePriceController.check);
+router.get("/check", ricePriceController.checkToUpdate);
 router.put("/update", ricePriceController.update);
 // router.get('/:slug', ricePriceController.show);
 
