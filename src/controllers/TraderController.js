@@ -5,7 +5,7 @@ class TraderController {
 
   // [GET] /trader/list-by-name
   showByName(req, res) {
-    // console.log("Request: ", req.params);
+    // console.log("Get Trader List by Name: ", req.params);
     Trader.find({
       $or: [
         { name: { $regex: req.params.name } },
@@ -24,7 +24,7 @@ class TraderController {
   // [GET] /trader/list-by-address
   // village, commune, town, province
   // showByAddress(req, res) {
-  //   // console.log("Request: ", req.params);
+  //   // console.log("Get Trader List by Address: ", req.params);
   //   Trader.find({ address: req.params.address })
   //     .then((traders) => {
   //       res.json(traders).end();

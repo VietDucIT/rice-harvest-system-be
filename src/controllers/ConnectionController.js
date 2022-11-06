@@ -18,9 +18,16 @@ class ConnectionController {
   // [POST] /connection/
   add(req, res) {
     // res.json(req.body);
-    const connection = new Connection(req.body);
-    connection.farmerId = new ObjectId(connection.idFarmer);
-    connection.traderId = new ObjectId(connection.idTrader);
+    const connectionData = Object.assign(req.body);
+    // console.log("Request Add Connection: ", connectionData);
+    let connection = new Connection({
+      ...connectionData,
+      farmerId: new ObjectId(connectionData.farmerId), // OR idFarmer
+      traderId: new ObjectId(connectionData.traderId), // OR idTrader
+    });
+    // const connection = new Connection(req.body);
+    // connection.farmerId = new ObjectId(connection.idFarmer);
+    // connection.traderId = new ObjectId(connection.idTrader);
     // console.log("Connection: ", connection);
 
     connection
@@ -50,7 +57,7 @@ class ConnectionController {
   // [DELETE] /connection/:id
   delete(req, res) {
     // res.json(req.body);
-    // console.log("Request: ", req.params);
+    // console.log("Request Delete Connection: ", req.params);
     Connection.deleteOne({ _id: req.params.id })
       .then(() => {
         res.sendStatus(200).end();
@@ -63,8 +70,8 @@ class ConnectionController {
 
   // [GET] /connection/:idUser/list
   showList(req, res) {
-    // console.log("Request: ", req.params);
-    Connection.find({ idUser: req.params.idUser })
+    // console.log("Get Connection List: ", req.params);
+    Connection.find({ idUser: new ObjectId(req.params.idUser) }) // OR idFarmer OR idTrader
       .then((connections) => {
         res.json(connections).end();
       })

@@ -7,7 +7,7 @@ router.get("/:id", riceBuyingAreaController.show);
 router.post("/", riceBuyingAreaController.add);
 router.put("/:id", riceBuyingAreaController.modify);
 router.delete("/:id", riceBuyingAreaController.delete);
-router.get("/:id/list", riceBuyingAreaController.showList);
+router.get("/:idTrader/list", riceBuyingAreaController.showList);
 // router.get('/:slug', riceBuyingAreaController.show);
 
 module.exports = router;

@@ -152,10 +152,10 @@ class RiceController {
 
     RicePrice.findOne({ date: today }, async (err, result) => {
       if (err) {
-        console.log("Error: ", err);
+        console.log("Error from checkToUpdate: ", err);
         res.send(false).end();
       } else if (result) {
-        console.log("Result: ", result);
+        console.log("A Rice Price of today: ", result);
         res.send(false).end();
       } else {
         try {
@@ -230,7 +230,6 @@ class RiceController {
               date,
               // isDeleted: false,
             });
-            // ricePrice._id = new ObjectId().toString();
             // console.log("Rice Price: ", ricePrice);
             ricePrice.save();
 
@@ -250,86 +249,86 @@ class RiceController {
   }
 
   // [GET] /rice-price/sort-posts
-  // sortPorts(req, res) {
-  //   const postList = require("../data/posts_reverse.json");
-  //   postList.sort((a, b) => a.link > b.link);
-  //   postList.reverse();
-  //   fs.writeFileSync("./src/data/posts.json", JSON.stringify(postList));
-  //   console.log(postList[1]);
-  //   res.sendStatus(200).end();
-  // }
+  sortPorts(req, res) {
+    const postList = require("./src/data/posts_reverse.json");
+    postList.sort((a, b) => a.link < b.link); // ???
+    postList.reverse(); // ???
+    fs.writeFileSync("./src/data/posts.json", JSON.stringify(postList));
+    console.log("First post: ", postList[1]);
+    res.sendStatus(200).end();
+  }
 
   // [GET] /rice-price/update-old-price
-  // async updateOldPrice(req, res) {
-  //   const postArray = require("../data/posts.json");
+  async updateOldPrice(req, res) {
+    const postArray = require("./src/data/posts.json");
 
-  //   for (let post of postArray) {
-  //     await request(post.link, (error, response, html) => {
-  //       if (!error && response.statusCode == 200) {
-  //         const $ = cheerio.load(html);
+    for (let post of postArray) {
+      await request(post.link, (error, response, html) => {
+        if (!error && response.statusCode == 200) {
+          const $ = cheerio.load(html);
 
-  //         // get DATE of the post
-  //         const datetime = $(".article-date").text();
-  //         const index = datetime.indexOf(", ") + 2;
-  //         const date = datetime.slice(index, index + 10);
-  //         // console.log(date);
+          // get DATE of the post
+          const datetime = $(".article-date").text();
+          const index = datetime.indexOf(", ") + 2;
+          const date = datetime.slice(index, index + 10);
+          // console.log(date);
 
-  //         $(".__MASTERCMS_TABLE_DATA tr").first().remove(); // remove heading of table
-  //         $(".__MASTERCMS_TABLE_DATA tr").each((index, el) => {
-  //           let min, max, average;
-  //           const rice = $(el).find("td").find("p").first().text();
-  //           const price = $(el).find("td:nth-child(3)").find("p").text();
-  //           // console.log(rice + ": " + price);
+          $(".__MASTERCMS_TABLE_DATA tr").first().remove(); // remove heading of table
+          $(".__MASTERCMS_TABLE_DATA tr").each((index, el) => {
+            let min, max, average;
+            const rice = $(el).find("td").find("p").first().text();
+            const price = $(el).find("td:nth-child(3)").find("p").text();
+            // console.log(rice + ": " + price);
 
-  //           if (price.includes(" – ")) {
-  //             let index = price.indexOf(" – ");
-  //             min = parseInt(price.slice(0, index).replace(".", ""));
-  //             max = parseInt(price.slice(index + 3).replace(".", ""));
-  //             average = parseInt((min + max) / 2);
-  //           } else if (price.includes(" - ")) {
-  //             let index = price.indexOf(" - ");
-  //             min = parseInt(price.slice(0, index).replace(".", ""));
-  //             max = parseInt(price.slice(index + 3).replace(".", ""));
-  //             average = parseInt((min + max) / 2);
-  //           } else {
-  //             average = parseInt(price.replace(".", ""));
-  //           }
+            if (price.includes(" – ")) {
+              let index = price.indexOf(" – ");
+              min = parseInt(price.slice(0, index).replace(".", ""));
+              max = parseInt(price.slice(index + 3).replace(".", ""));
+              average = parseInt((min + max) / 2);
+            } else if (price.includes(" - ")) {
+              let index = price.indexOf(" - ");
+              min = parseInt(price.slice(0, index).replace(".", ""));
+              max = parseInt(price.slice(index + 3).replace(".", ""));
+              average = parseInt((min + max) / 2);
+            } else {
+              average = parseInt(price.replace(".", ""));
+            }
 
-  //           // save to database
-  //           const ricePrice = new RicePrice({
-  //             rice,
-  //             price,
-  //             min,
-  //             max,
-  //             average,
-  //             date,
-  //           });
-  //           ricePrice.save();
-  //         });
-  //       } else {
-  //         console.log(error);
-  //       }
-  //     });
-  //   }
+            // save to database
+            const ricePrice = new RicePrice({
+              rice,
+              average,
+              date,
+              price, // can remove
+              min, // can remove
+              max, // can remove
+            });
+            ricePrice.save();
+          });
+        } else {
+          console.log(error);
+        }
+      });
+    }
 
-  //   res.sendStatus(200).end();
-  // }
+    res.sendStatus(200).end();
+  }
 
   // [GET] /rice-price/count-document
-  // count(req, res) {
-  //   const yyyy = 2022;
-  //   for (let dd = 1; dd <= 31; dd++) {
-  //     let mm = 8;
-  //     if (dd < 10) dd = "0" + dd;
-  //     if (mm < 10) mm = "0" + mm;
+  count(req, res) {
+    const yyyy = 2022;
+    for (let dd = 1; dd <= 31; dd++) {
+      let mm = 8; // change manually or by for loop
+      if (dd < 10) dd = "0" + dd;
+      if (mm < 10) mm = "0" + mm;
 
-  //     const date = dd + "/" + mm + "/2022";
-  //     RicePrice.countDocuments({ date }, (err, count) => {
-  //       console.log(date + " has " + count + " documents");
-  //     });
-  //   }
-  //   res.sendStatus(200).end();
-  // }
+      const date = dd + "/" + mm + "/2022";
+      RicePrice.countDocuments({ date }, (err, count) => {
+        console.log(date + " has " + count + " documents");
+      });
+    }
+    res.sendStatus(200).end();
+  }
 }
 
 module.exports = new RiceController();

@@ -18,8 +18,12 @@ class RiceFieldController {
   // [POST] /rice-field/
   add(req, res) {
     // res.json(req.body);
-    const riceField = new RiceField(req.body);
-    riceField.idFarmer = new ObjectId(riceField.idFarmer);
+    const fieldData = Object.assign(req.body);
+    // console.log("Request Add Rice Field: ", fieldData);
+    let riceField = new RiceField({
+      ...fieldData,
+      farmerId: new ObjectId(fieldData.farmerId),
+    });
     // console.log("Rice Field: ", riceField);
 
     riceField
@@ -49,7 +53,7 @@ class RiceFieldController {
   // [DELETE] /rice-field/:id
   delete(req, res) {
     // res.json(req.body);
-    // console.log("Request: ", req.params);
+    // console.log("Request Delete Rice Field: ", req.params);
     RiceField.deleteOne({ _id: req.params.id })
       .then(() => {
         res.sendStatus(200).end();
@@ -62,8 +66,8 @@ class RiceFieldController {
 
   // [GET] /rice-field/:idFarmer/list
   showList(req, res) {
-    // console.log("Request: ", req.params);
-    RiceField.find({ farmerId: req.params.idFarmer })
+    // console.log("Get Rice Field List: ", req.params);
+    RiceField.find({ farmerId: new ObjectId(req.params.idFarmer) })
       .then((riceFields) => {
         res.json(riceFields).end();
       })

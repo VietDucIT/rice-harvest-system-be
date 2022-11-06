@@ -7,7 +7,7 @@ router.get("/:id", notificationController.show);
 router.post("/", notificationController.add);
 // router.put("/:id", notificationController.modify);
 router.delete("/:id", notificationController.delete);
-router.get("/:id/list", notificationController.showList);
+router.get("/:idUser/list", notificationController.showList);
 // router.get('/:slug', notificationController.show);
 
 module.exports = router;

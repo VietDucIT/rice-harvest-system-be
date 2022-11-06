@@ -18,10 +18,14 @@ class RiceSeasonController {
   // [POST] /rice-season/
   add(req, res) {
     // res.json(req.body);
-    console.log("Rice Season before: ", riceSeason);
+    // const riceSeasonData = Object.assign(req.body);
+    // // console.log("Request Add Rice Season: ", riceSeasonData);
+    // let riceSeason = new RiceSeason({
+    //   ...riceSeasonData,
+    //   farmerId: new ObjectId(riceSeasonData.farmerId),
+    // });
     const riceSeason = new RiceSeason(req.body);
-    riceSeason.riceFieldId = new ObjectId(riceSeason.idRiceField);
-    console.log("Rice Season after: ", riceSeason);
+    console.log("Rice Season: ", riceSeason);
 
     riceSeason
       .save()
@@ -50,7 +54,7 @@ class RiceSeasonController {
   // [DELETE] /rice-season/:id
   delete(req, res) {
     // res.json(req.body);
-    // console.log("Request: ", req.params);
+    // console.log("Request Delete Rice Season: ", req.params);
     RiceSeason.deleteOne({ _id: req.params.id })
       .then(() => {
         res.sendStatus(200).end();
@@ -63,8 +67,8 @@ class RiceSeasonController {
 
   // [GET] /rice-season/:idFarmer/list
   showList(req, res) {
-    // console.log("Request: ", req.params);
-    RiceSeason.find({ farmerId: req.params.idFarmer }) // idFarmer of idRiceField
+    // console.log("Get Rice Season List: ", req.params);
+    RiceSeason.find({ farmerId: new ObjectId(req.params.idFarmer) }) // idFarmer of idRiceField ???
       .then((riceSeasons) => {
         res.json(riceSeasons).end();
       })

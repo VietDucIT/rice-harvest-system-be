@@ -9,6 +9,7 @@ const Connection = new Schema(
 
     farmerId: { type: Schema.Types.ObjectId, ref: "Farmer" },
     traderId: { type: Schema.Types.ObjectId, ref: "Trader" },
+    // id User ??
   },
   {
     timestamps: true, // create 2 fields "createdAt" and "updatedAt" automatically

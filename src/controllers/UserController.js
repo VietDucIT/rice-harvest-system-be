@@ -31,7 +31,6 @@ class UserController {
   add(req, res) {
     // res.json(req.body);
     const user = new User(req.body);
-    // user._id = new ObjectId().toString();
     console.log("User BE: ", user);
 
     user
@@ -61,7 +60,7 @@ class UserController {
   // [DELETE] /user/:id
   delete(req, res) {
     // res.json(req.body);
-    // console.log("Request: ", req.params);
+    // console.log("Request Delete User: ", req.params);
     User.deleteOne({ _id: req.params.id })
       .then(() => {
         res.sendStatus(200).end();

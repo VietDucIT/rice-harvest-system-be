@@ -18,8 +18,12 @@ class SuggestToBuyController {
   // [POST] /suggest-to-buy/
   add(req, res) {
     // res.json(req.body);
-    const suggestToBuy = new SuggestToBuy(req.body);
-    suggestToBuy.traderId = new ObjectId(suggestToBuy.idTrader);
+    const suggestData = Object.assign(req.body);
+    // console.log("Request Add Suggest To Buy: ", suggestData);
+    let suggestToBuy = new SuggestToBuy({
+      ...suggestData,
+      traderId: new ObjectId(suggestData.traderId), // OR idTrader
+    });
     // console.log("Suggest To Buy: ", suggestToBuy);
 
     suggestToBuy
@@ -49,7 +53,7 @@ class SuggestToBuyController {
   // [DELETE] /suggest-to-buy/:id
   delete(req, res) {
     // res.json(req.body);
-    // console.log("Request: ", req.params);
+    // console.log("Request Delete Suggest To Buy: ", req.params);
     SuggestToBuy.deleteOne({ _id: req.params.id })
       .then(() => {
         res.sendStatus(200).end();
@@ -62,8 +66,8 @@ class SuggestToBuyController {
 
   // [GET] /suggest-to-buy/:idTrader/list
   showList(req, res) {
-    // console.log("Request: ", req.params);
-    SuggestToBuy.find({ traderId: req.params.idTrader })
+    // console.log("Get Suggest To Buy List by Trader: ", req.params);
+    SuggestToBuy.find({ traderId: new ObjectId(req.params.idTrader) })
       .then((suggestToBuys) => {
         res.json(suggestToBuys).end();
       })
@@ -73,9 +77,9 @@ class SuggestToBuyController {
       });
   }
 
-  // [GET] /suggest-to-buy//:idRiceSeason/list-for-rice-season
+  // [GET] /suggest-to-buy/:idRiceSeason/list-for-rice-season
   showListForRiceSeason(req, res) {
-    // console.log("Request: ", req.params);
+    // console.log("Get Suggest To Buy List by Rice Season: ", req.params);
     SuggestToBuy.find({ riceSeasonId: req.params.idRiceSeason })
       .then((suggestToBuys) => {
         res.json(suggestToBuys).end();

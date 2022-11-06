@@ -5,7 +5,7 @@ class FarmerController {
 
   // [GET] /farmer/list-by-name
   showByName(req, res) {
-    // console.log("Request: ", req.params);
+    // console.log("Get Farmer List by Name: ", req.params);
     Farmer.find({
       $or: [
         { name: { $regex: req.params.name } },
@@ -24,7 +24,7 @@ class FarmerController {
   // [GET] /farmer/list-by-address
   // village, commune, town, province
   // showByAddress(req, res) {
-  //   // console.log("Request: ", req.params);
+  //   // console.log("Get Farmer List by Address: ", req.params);
   //   Farmer.find({ address: req.params.address })
   //     .then((farmers) => {
   //       res.json(farmers).end();

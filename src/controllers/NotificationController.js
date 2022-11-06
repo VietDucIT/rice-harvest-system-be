@@ -18,8 +18,14 @@ class NotificationController {
   // [POST] /notification/
   add(req, res) {
     // res.json(req.body);
-    const notification = new Notification(req.body);
-    notification.userId = new ObjectId(notification.idUser);
+    const notificationData = Object.assign(req.body);
+    // console.log("Request Add Notification: ", notificationData);
+    let notification = new Notification({
+      ...notificationData,
+      userId: new ObjectId(notificationData.idUser),
+    });
+    // const notification = new Notification(req.body);
+    // notification.userId = new ObjectId(notification.idUser);
     // console.log("Notification: ", notification);
 
     notification
@@ -49,7 +55,7 @@ class NotificationController {
   // [DELETE] /notification/:id
   delete(req, res) {
     // res.json(req.body);
-    // console.log("Request: ", req.params);
+    // console.log("Request Delete Notification: ", req.params);
     Notification.deleteOne({ _id: req.params.id })
       .then(() => {
         res.sendStatus(200).end();
@@ -62,8 +68,8 @@ class NotificationController {
 
   // [GET] /notification/:idUser/list
   showList(req, res) {
-    // console.log("Request: ", req.params);
-    Notification.find({ idUser: req.params.idUser })
+    // console.log("Get Notification List: ", req.params);
+    Notification.find({ idUser: new ObjectId(req.params.idUser) })
       .then((notifications) => {
         res.json(notifications).end();
       })

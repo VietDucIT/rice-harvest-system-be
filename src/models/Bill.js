@@ -9,6 +9,7 @@ const Bill = new Schema(
     totalRice: { type: Number, required: true },
 
     suggestToBuyId: { type: Schema.Types.ObjectId, ref: "SuggestToBuy" },
+    // idUser for get list ???
   },
   {
     timestamps: true, // create 2 fields "createdAt" and "updatedAt" automatically
