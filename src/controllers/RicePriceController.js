@@ -1,6 +1,6 @@
 const cheerio = require("cheerio");
 const request = require("request-promise");
-// const fs = require("fs");
+const fs = require("fs");
 const { ObjectId } = require("mongodb");
 
 const RicePrice = require("../models/RicePrice");
@@ -64,18 +64,52 @@ class RiceController {
   }
 
   // [GET] /rice-price/prediction
-  predict(req, res) {
+  async predict(req, res) {
     // FIND PREDICTION, NEED TO ADD A FIELD TO SCHEMA ???
-    console.log("Get prediction");
+    // console.log("Get prediction");
 
+    // METHOD 1: USING NODEJS   => A bit difficult and not beautiful
+    // const timeseries = require("timeseries-analysis");
+    // let ricePriceData = [];
+    // await RicePrice.find({ rice: "OM 18" })
+    //   .then((ricePrice) => {
+    //     // convert dd/mm/yyyy of String type to Date type
+    //     for (let item of ricePrice) {
+    //       let dateParts = item.date.split("/"); // date of format dd/mm/yyyy
+    //       // month is 0-based, that's why we need dataParts[1] - 1
+    //       item.date = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
+    //     }
+
+    //     // assign array ricePrice to ricePriceData
+    //     ricePriceData = ricePrice.slice(0);
+    //     // console.log(ricePriceData.length);
+    //   })
+    //   .catch((err) => {
+    //     console.log("Error: ", err);
+    //   });
+
+    // // Load the data
+    // let t = new timeseries.main(
+    //   timeseries.adapter.fromDB(ricePriceData, {
+    //     date: "date",
+    //     value: "average",
+    //   })
+    // );
+
+    // let chart_url = t.ma().chart();
+    // console.log(chart_url);
+
+    // res.sendStatus(200).end();
+
+    // METHOD 2: USING PYTHON
+    // Method 2.1: Using spawn
     var spawn = require("child_process").spawn;
     var process = spawn("python", ["src/services/predictRicePrice.py"]);
     process.stdout.on("data", (data) => {
-      console.log(data.toString());
-      res.send(data.toString()).end();
+      res.send(data).end();
     });
 
-    // METHOD 2
+    // Method 2.2: Using PythonShell
     // let { PythonShell } = require("python-shell");
     // var options = {
     //   // scriptPath: "src/services/",
@@ -214,6 +248,88 @@ class RiceController {
 
     res.sendStatus(200).end();
   }
+
+  // [GET] /rice-price/sort-posts
+  // sortPorts(req, res) {
+  //   const postList = require("../data/posts_reverse.json");
+  //   postList.sort((a, b) => a.link > b.link);
+  //   postList.reverse();
+  //   fs.writeFileSync("./src/data/posts.json", JSON.stringify(postList));
+  //   console.log(postList[1]);
+  //   res.sendStatus(200).end();
+  // }
+
+  // [GET] /rice-price/update-old-price
+  // async updateOldPrice(req, res) {
+  //   const postArray = require("../data/posts.json");
+
+  //   for (let post of postArray) {
+  //     await request(post.link, (error, response, html) => {
+  //       if (!error && response.statusCode == 200) {
+  //         const $ = cheerio.load(html);
+
+  //         // get DATE of the post
+  //         const datetime = $(".article-date").text();
+  //         const index = datetime.indexOf(", ") + 2;
+  //         const date = datetime.slice(index, index + 10);
+  //         // console.log(date);
+
+  //         $(".__MASTERCMS_TABLE_DATA tr").first().remove(); // remove heading of table
+  //         $(".__MASTERCMS_TABLE_DATA tr").each((index, el) => {
+  //           let min, max, average;
+  //           const rice = $(el).find("td").find("p").first().text();
+  //           const price = $(el).find("td:nth-child(3)").find("p").text();
+  //           // console.log(rice + ": " + price);
+
+  //           if (price.includes(" – ")) {
+  //             let index = price.indexOf(" – ");
+  //             min = parseInt(price.slice(0, index).replace(".", ""));
+  //             max = parseInt(price.slice(index + 3).replace(".", ""));
+  //             average = parseInt((min + max) / 2);
+  //           } else if (price.includes(" - ")) {
+  //             let index = price.indexOf(" - ");
+  //             min = parseInt(price.slice(0, index).replace(".", ""));
+  //             max = parseInt(price.slice(index + 3).replace(".", ""));
+  //             average = parseInt((min + max) / 2);
+  //           } else {
+  //             average = parseInt(price.replace(".", ""));
+  //           }
+
+  //           // save to database
+  //           const ricePrice = new RicePrice({
+  //             rice,
+  //             price,
+  //             min,
+  //             max,
+  //             average,
+  //             date,
+  //           });
+  //           ricePrice.save();
+  //         });
+  //       } else {
+  //         console.log(error);
+  //       }
+  //     });
+  //   }
+
+  //   res.sendStatus(200).end();
+  // }
+
+  // [GET] /rice-price/count-document
+  // count(req, res) {
+  //   const yyyy = 2022;
+  //   for (let dd = 1; dd <= 31; dd++) {
+  //     let mm = 8;
+  //     if (dd < 10) dd = "0" + dd;
+  //     if (mm < 10) mm = "0" + mm;
+
+  //     const date = dd + "/" + mm + "/2022";
+  //     RicePrice.countDocuments({ date }, (err, count) => {
+  //       console.log(date + " has " + count + " documents");
+  //     });
+  //   }
+  //   res.sendStatus(200).end();
+  // }
 }
 
 module.exports = new RiceController();
