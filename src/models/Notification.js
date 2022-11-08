@@ -6,7 +6,7 @@ const Notification = new Schema(
   {
     // _id: { type: String },
     content: { type: String },
-    status: { type: String }, // deleted, unread, read
+    status: { type: String }, // Unread/Read
 
     userId: { type: Schema.Types.ObjectId, ref: "User" },
   },

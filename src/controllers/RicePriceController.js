@@ -26,7 +26,7 @@ const getTodayPost = async () => {
           `https://congthuong.vn/gia-lua-gao-hom-nay-${todayOnURL}`
         )
       ) {
-        // console.log("From getTodayPost: ", urlLatestPost);
+        console.log("From getTodayPost: ", urlLatestPost);
         resolve(urlLatestPost);
       } else {
         reject(error);

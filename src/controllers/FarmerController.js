@@ -1,4 +1,5 @@
 const Farmer = require("../models/Farmer");
+const User = require("../models/User");
 
 class FarmerController {
   // ALL CONTROLLERS OF USER ???
@@ -6,11 +7,12 @@ class FarmerController {
   // [GET] /farmer/list-by-name
   showByName(req, res) {
     // console.log("Get Farmer List by Name: ", req.params);
-    Farmer.find({
+    User.find({
       $or: [
         { name: { $regex: req.params.name } },
         { nickname: { $regex: req.params.name } },
       ],
+      role: 0,
     })
       .then((farmers) => {
         res.json(farmers).end();

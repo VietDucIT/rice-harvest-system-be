@@ -40,17 +40,18 @@ class NotificationController {
   }
 
   // [PUT] /notification/:id
-  // modify(req, res) {
-  //   // res.json(req.body);
-  //   Notification.updateOne({ _id: req.params.id }, req.body)
-  //     .then(() => {
-  //       res.sendStatus(200).end();
-  //     })
-  //     .catch((err) => {
-  //       res.status(500).end();
-  //       console.log(err);
-  //     });
-  // }
+  // just set status Read/Unread
+  modify(req, res) {
+    // res.json(req.body);
+    Notification.updateOne({ _id: req.params.id }, req.body)
+      .then(() => {
+        res.sendStatus(200).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
 
   // [DELETE] /notification/:id
   delete(req, res) {

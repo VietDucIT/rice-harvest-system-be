@@ -17,8 +17,9 @@ class UserController {
 
   // [GET] /user/checkUniquePhone
   checkPhone(req, res) {
-    User.findOne({ phone: req.params.phone })
+    User.findOne({ phone: req.query.phone })
       .then((user) => {
+        console.log(`This user has ${phone}: `, user);
         res.send(true).end();
       })
       .catch((err) => {
