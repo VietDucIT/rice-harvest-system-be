@@ -34,7 +34,7 @@ from matplotlib import pyplot
 # autocorrelation_plot(series)
 # pyplot.show()
 
-## Option 2.3: plot_acf()
+## Option 2.4: plot_acf()
 # from statsmodels.graphics.tsaplots import plot_acf
 # series = read_csv('src/data/mock_data.csv', header=0, index_col=0)
 # plot_acf(series, lags=60)
@@ -50,7 +50,7 @@ from matplotlib import pyplot
 ## create lagged dataset
 # values = DataFrame(series.values)
 # dataframe = concat([values.shift(1), values], axis=1)
-# dataframe.columns = ['t-1', 't+1']
+# dataframe.columns = ['t-1', 't']
 ## split into train and test sets
 # X = dataframe.values
 # train, test = X[1:len(X)-7], X[len(X)-7:]

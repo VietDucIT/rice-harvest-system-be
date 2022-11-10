@@ -3,6 +3,19 @@ const { ObjectId } = require("mongodb");
 const RiceBuyingArea = require("../models/RiceBuyingArea");
 
 class RiceBuyingAreaController {
+  // [GET] /rice-buying-area/trader/:idTrader
+  showList(req, res) {
+    // console.log("Get Rice Buying Area List: ", req.params);
+    RiceBuyingArea.find({ traderId: new ObjectId(req.params.idTrader) })
+      .then((riceBuyingAreas) => {
+        res.json(riceBuyingAreas).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
+
   // [GET] /rice-buying-area/:id
   show(req, res) {
     RiceBuyingArea.findById(req.params.id)
@@ -58,19 +71,6 @@ class RiceBuyingAreaController {
     RiceBuyingArea.deleteOne({ _id: req.params.id })
       .then(() => {
         res.sendStatus(200).end();
-      })
-      .catch((err) => {
-        res.status(500).end();
-        console.log(err);
-      });
-  }
-
-  // [GET] /rice-buying-area/:idTrader/list
-  showList(req, res) {
-    // console.log("Get Rice Buying Area List: ", req.params);
-    RiceBuyingArea.find({ traderId: new ObjectId(req.params.idTrader) })
-      .then((riceBuyingAreas) => {
-        res.json(riceBuyingAreas).end();
       })
       .catch((err) => {
         res.status(500).end();

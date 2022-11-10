@@ -3,11 +3,37 @@ const { ObjectId } = require("mongodb");
 const RiceField = require("../models/RiceField");
 
 class RiceFieldController {
+  // [GET] /rice-field/farmer/:idFarmer
+  showList(req, res) {
+    // console.log("Get Rice Field List by Farmer: ", req.params);
+    RiceField.find({ farmerId: new ObjectId(req.params.idFarmer) })
+      .then((riceFields) => {
+        res.json(riceFields).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
+
   // [GET] /rice-field/:id
-  show(req, res) {
+  showOne(req, res) {
     RiceField.findById(req.params.id)
       .then((riceField) => {
         res.json(riceField).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
+
+  // [GET] /rice-field/
+  showAll(req, res) {
+    // console.log("Get all Rice Field: ", req.params);
+    RiceField.find()
+      .then((riceFields) => {
+        res.json(riceFields).end();
       })
       .catch((err) => {
         res.status(500).end();
@@ -57,19 +83,6 @@ class RiceFieldController {
     RiceField.deleteOne({ _id: req.params.id })
       .then(() => {
         res.sendStatus(200).end();
-      })
-      .catch((err) => {
-        res.status(500).end();
-        console.log(err);
-      });
-  }
-
-  // [GET] /rice-field/:idFarmer/list
-  showList(req, res) {
-    // console.log("Get Rice Field List: ", req.params);
-    RiceField.find({ farmerId: new ObjectId(req.params.idFarmer) })
-      .then((riceFields) => {
-        res.json(riceFields).end();
       })
       .catch((err) => {
         res.status(500).end();

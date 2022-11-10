@@ -40,29 +40,6 @@ const getTodayPost = async () => {
 };
 
 class RiceController {
-  // [GET] /rice-price/
-  show(req, res) {
-    const currentTime = new Date();
-
-    const yyyy = currentTime.getFullYear();
-    let mm = currentTime.getMonth() + 1;
-    let dd = currentTime.getDate();
-
-    if (dd < 10) dd = "0" + dd;
-    if (mm < 10) mm = "0" + mm;
-    const today = dd + "/" + mm + "/" + yyyy;
-
-    RicePrice.find({ date: today })
-      .then((rice) => {
-        // console.log(rice);
-        res.json(rice).end();
-      })
-      .catch((err) => {
-        res.status(500).end();
-        console.log(err);
-      });
-  }
-
   // [GET] /rice-price/prediction
   async predict(req, res) {
     // FIND PREDICTION, NEED TO ADD A FIELD TO SCHEMA ???
@@ -170,6 +147,45 @@ class RiceController {
     });
   }
 
+  // [GET] /rice-price/count-document
+  count(req, res) {
+    const yyyy = 2022;
+    for (let dd = 1; dd <= 31; dd++) {
+      let mm = 8; // change manually or by for loop
+      if (dd < 10) dd = "0" + dd;
+      if (mm < 10) mm = "0" + mm;
+
+      const date = dd + "/" + mm + "/2022";
+      RicePrice.countDocuments({ date }, (err, count) => {
+        console.log(date + " has " + count + " documents");
+      });
+    }
+    res.sendStatus(200).end();
+  }
+
+  // [GET] /rice-price/
+  show(req, res) {
+    const currentTime = new Date();
+
+    const yyyy = currentTime.getFullYear();
+    let mm = currentTime.getMonth() + 1;
+    let dd = currentTime.getDate();
+
+    if (dd < 10) dd = "0" + dd;
+    if (mm < 10) mm = "0" + mm;
+    const today = dd + "/" + mm + "/" + yyyy;
+
+    RicePrice.find({ date: today })
+      .then((rice) => {
+        // console.log(rice);
+        res.json(rice).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
+
   // [PUT] /rice-price/update
   async update(req, res) {
     // delete all data in Rice Price collection
@@ -248,17 +264,7 @@ class RiceController {
     res.sendStatus(200).end();
   }
 
-  // [GET] /rice-price/sort-posts
-  sortPorts(req, res) {
-    const postList = require("./src/data/posts_reverse.json");
-    postList.sort((a, b) => a.link < b.link); // ???
-    postList.reverse(); // ???
-    fs.writeFileSync("./src/data/posts.json", JSON.stringify(postList));
-    console.log("First post: ", postList[1]);
-    res.sendStatus(200).end();
-  }
-
-  // [GET] /rice-price/update-old-price
+  // [PUP] /rice-price/update-old-price
   async updateOldPrice(req, res) {
     const postArray = require("./src/data/posts.json");
 
@@ -314,19 +320,13 @@ class RiceController {
     res.sendStatus(200).end();
   }
 
-  // [GET] /rice-price/count-document
-  count(req, res) {
-    const yyyy = 2022;
-    for (let dd = 1; dd <= 31; dd++) {
-      let mm = 8; // change manually or by for loop
-      if (dd < 10) dd = "0" + dd;
-      if (mm < 10) mm = "0" + mm;
-
-      const date = dd + "/" + mm + "/2022";
-      RicePrice.countDocuments({ date }, (err, count) => {
-        console.log(date + " has " + count + " documents");
-      });
-    }
+  // [PUT] /rice-price/sort-posts
+  sortPorts(req, res) {
+    const postList = require("./src/data/posts_reverse.json");
+    postList.sort((a, b) => a.link < b.link); // ???
+    postList.reverse(); // ???
+    fs.writeFileSync("./src/data/posts.json", JSON.stringify(postList));
+    console.log("First post: ", postList[1]);
     res.sendStatus(200).end();
   }
 }

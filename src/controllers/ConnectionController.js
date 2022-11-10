@@ -3,6 +3,35 @@ const { ObjectId } = require("mongodb");
 const Connection = require("../models/Connection");
 
 class ConnectionController {
+  // [GET] /connection/user/:idUser
+  showList(req, res) {
+    // console.log("Get Connection List: ", req.params);
+    Connection.find({ idUser: new ObjectId(req.params.idUser) }) // OR idFarmer OR idTrader
+      .then((connections) => {
+        res.json(connections).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
+
+  // [GET] /connection/find/:idUser
+  showListByName(req, res) {
+    // console.log("Search Connections: ", req.params);
+    Connection.find({
+      idUser: new ObjectId(req.params.idUser),
+      farmerName: /`${req.params.name}`/, // ?????
+    }) // OR idFarmer OR idTrader
+      .then((connections) => {
+        res.json(connections).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
+
   // [GET] /connection/:id
   show(req, res) {
     Connection.findById(req.params.id)
@@ -61,19 +90,6 @@ class ConnectionController {
     Connection.deleteOne({ _id: req.params.id })
       .then(() => {
         res.sendStatus(200).end();
-      })
-      .catch((err) => {
-        res.status(500).end();
-        console.log(err);
-      });
-  }
-
-  // [GET] /connection/:idUser/list
-  showList(req, res) {
-    // console.log("Get Connection List: ", req.params);
-    Connection.find({ idUser: new ObjectId(req.params.idUser) }) // OR idFarmer OR idTrader
-      .then((connections) => {
-        res.json(connections).end();
       })
       .catch((err) => {
         res.status(500).end();

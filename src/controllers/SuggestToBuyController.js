@@ -3,6 +3,32 @@ const { ObjectId } = require("mongodb");
 const SuggestToBuy = require("../models/SuggestToBuy");
 
 class SuggestToBuyController {
+  // [GET] /suggest-to-buy/trader/:idTrader
+  showList(req, res) {
+    // console.log("Get Suggest To Buy List by Trader: ", req.params);
+    SuggestToBuy.find({ traderId: new ObjectId(req.params.idTrader) })
+      .then((suggestToBuys) => {
+        res.json(suggestToBuys).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
+
+  // [GET] /suggest-to-buy/season/:idRiceSeason
+  showListForRiceSeason(req, res) {
+    // console.log("Get Suggest To Buy List by Rice Season: ", req.params);
+    SuggestToBuy.find({ riceSeasonId: req.params.idRiceSeason })
+      .then((suggestToBuys) => {
+        res.json(suggestToBuys).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
+
   // [GET] /suggest-to-buy/:id
   show(req, res) {
     SuggestToBuy.findById(req.params.id)
@@ -57,32 +83,6 @@ class SuggestToBuyController {
     SuggestToBuy.deleteOne({ _id: req.params.id })
       .then(() => {
         res.sendStatus(200).end();
-      })
-      .catch((err) => {
-        res.status(500).end();
-        console.log(err);
-      });
-  }
-
-  // [GET] /suggest-to-buy/:idTrader/list
-  showList(req, res) {
-    // console.log("Get Suggest To Buy List by Trader: ", req.params);
-    SuggestToBuy.find({ traderId: new ObjectId(req.params.idTrader) })
-      .then((suggestToBuys) => {
-        res.json(suggestToBuys).end();
-      })
-      .catch((err) => {
-        res.status(500).end();
-        console.log(err);
-      });
-  }
-
-  // [GET] /suggest-to-buy/:idRiceSeason/list-for-rice-season
-  showListForRiceSeason(req, res) {
-    // console.log("Get Suggest To Buy List by Rice Season: ", req.params);
-    SuggestToBuy.find({ riceSeasonId: req.params.idRiceSeason })
-      .then((suggestToBuys) => {
-        res.json(suggestToBuys).end();
       })
       .catch((err) => {
         res.status(500).end();

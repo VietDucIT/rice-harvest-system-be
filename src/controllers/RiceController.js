@@ -1,7 +1,7 @@
 const Rice = require("../models/Rice");
 
 class RiceController {
-  // [GET] /rice/list
+  // [GET] /rice/
   showList(req, res) {
     Rice.find({})
       .then((item) => {
@@ -13,7 +13,7 @@ class RiceController {
       });
   }
 
-  // [GET] /rice/update
+  // [PUT] /rice/update
   update(req, res) {
     const riceArray = [
       {

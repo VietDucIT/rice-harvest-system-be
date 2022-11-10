@@ -3,6 +3,19 @@ const { ObjectId } = require("mongodb");
 const Notification = require("../models/Notification");
 
 class NotificationController {
+  // [GET] /notification/user/:idUser
+  showList(req, res) {
+    // console.log("Get Notification List: ", req.params);
+    Notification.find({ userId: new ObjectId(req.params.idUser) })
+      .then((notifications) => {
+        res.json(notifications).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
+
   // [GET] /notification/:id
   show(req, res) {
     Notification.findById(req.params.id)
@@ -60,19 +73,6 @@ class NotificationController {
     Notification.deleteOne({ _id: req.params.id })
       .then(() => {
         res.sendStatus(200).end();
-      })
-      .catch((err) => {
-        res.status(500).end();
-        console.log(err);
-      });
-  }
-
-  // [GET] /notification/:idUser/list
-  showList(req, res) {
-    // console.log("Get Notification List: ", req.params);
-    Notification.find({ idUser: new ObjectId(req.params.idUser) })
-      .then((notifications) => {
-        res.json(notifications).end();
       })
       .catch((err) => {
         res.status(500).end();

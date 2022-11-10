@@ -3,6 +3,19 @@ const { ObjectId } = require("mongodb");
 const User = require("../models/User");
 
 class UserController {
+  // [GET] /user/check-unique-phone
+  checkPhone(req, res) {
+    User.findOne({ phone: req.query.phone })
+      .then((user) => {
+        console.log(`This user has ${phone}: `, user);
+        res.send(true).end();
+      })
+      .catch((err) => {
+        res.send(false).end();
+        console.log(err);
+      });
+  }
+
   // [GET] /user/:id
   show(req, res) {
     User.findById(req.params.id)
@@ -15,15 +28,18 @@ class UserController {
       });
   }
 
-  // [GET] /user/checkUniquePhone
-  checkPhone(req, res) {
-    User.findOne({ phone: req.query.phone })
+  // [POST] /user/login
+  logIn(req, res) {
+    // console.log("Request from: ", req.ip);
+    User.findOne({
+      phone: req.body.phone,
+      password: req.body.password,
+    })
       .then((user) => {
-        console.log(`This user has ${phone}: `, user);
-        res.send(true).end();
+        res.json(user).end();
       })
       .catch((err) => {
-        res.send(false).end();
+        res.sendStatus(500).end();
         console.log(err);
       });
   }
@@ -68,22 +84,6 @@ class UserController {
       })
       .catch((err) => {
         res.status(500).end();
-        console.log(err);
-      });
-  }
-
-  // [POST] /user/login
-  logIn(req, res) {
-    // console.log("Request from: ", req.ip);
-    User.findOne({
-      phone: req.body.phone,
-      password: req.body.password,
-    })
-      .then((user) => {
-        res.json(user).end();
-      })
-      .catch((err) => {
-        res.sendStatus(500).end();
         console.log(err);
       });
   }
