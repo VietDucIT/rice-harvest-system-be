@@ -43,11 +43,11 @@ rmse = sqrt(mean_squared_error(test, predictions))
 print('Test RMSE: %d' % rmse)
 
 ## Show line chart
-# pyplot.plot(test)												# Thực tế
-# pyplot.plot(predictions, color='red')		# Dự báo
-# pyplot.title("Biểu đồ dự báo giá lúa")
-# pyplot.xlabel("Ngày")
-# pyplot.ylabel("Giá lúa (đồng/kg)")
-## pyplot.xticks(np.arange(0,8,1))
-## pyplot.yticks(np.arange(11, 17, 0.5))
-# pyplot.show()
+pyplot.plot(test)												# Thực tế
+pyplot.plot(predictions, color='red')		# Dự báo
+pyplot.title("Biểu đồ dự báo giá lúa")
+pyplot.xlabel("Ngày")
+pyplot.ylabel("Giá lúa (đồng/kg)")
+# pyplot.xticks(np.arange(0,8,1))
+# pyplot.yticks(np.arange(11, 17, 0.5))
+pyplot.show()

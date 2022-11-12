@@ -3,11 +3,29 @@ const { ObjectId } = require("mongodb");
 const RiceField = require("../models/RiceField");
 
 class RiceFieldController {
+  // [GET] /rice-field/find-by-name
+  findByName(req, res) {
+    console.log("Find Rice Field by Name: ", req.query);
+    RiceField.find({
+      farmerId: new ObjectId(req.query.idFarmer),
+      name: new RegExp(req.query.name),
+    })
+      .then((riceFields) => {
+        console.log("From find Rice Field by Name: ", riceFields);
+        res.json(riceFields).end();
+      })
+      .catch((err) => {
+        console.log("Can't find Rice Field by Name: ", err);
+        res.status(500).end();
+      });
+  }
+
   // [GET] /rice-field/farmer/:idFarmer
   showList(req, res) {
     // console.log("Get Rice Field List by Farmer: ", req.params);
     RiceField.find({ farmerId: new ObjectId(req.params.idFarmer) })
       .then((riceFields) => {
+        console.log(riceFields);
         res.json(riceFields).end();
       })
       .catch((err) => {
@@ -33,6 +51,7 @@ class RiceFieldController {
     // console.log("Get all Rice Field: ", req.params);
     RiceField.find()
       .then((riceFields) => {
+        // console.log("Show all Rice Fileds: ", riceFields);
         res.json(riceFields).end();
       })
       .catch((err) => {

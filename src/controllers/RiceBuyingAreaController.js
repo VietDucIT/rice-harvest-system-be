@@ -3,6 +3,23 @@ const { ObjectId } = require("mongodb");
 const RiceBuyingArea = require("../models/RiceBuyingArea");
 
 class RiceBuyingAreaController {
+  // [GET] /rice-buying-area/find-by-name
+  findByName(req, res) {
+    console.log("Find Rice Buying Area by Name: ", req.query);
+    RiceBuyingArea.find({
+      traderId: new ObjectId(req.query.idTrader),
+      name: new RegExp(req.query.name),
+    })
+      .then((riceBuyingAreas) => {
+        console.log("From find Rice Buying Area by Name: ", riceBuyingAreas);
+        res.json(riceBuyingAreas).end();
+      })
+      .catch((err) => {
+        console.log("Can't find Rice Buying Area by Name: ", err);
+        res.status(500).end();
+      });
+  }
+
   // [GET] /rice-buying-area/trader/:idTrader
   showList(req, res) {
     // console.log("Get Rice Buying Area List: ", req.params);
@@ -17,7 +34,7 @@ class RiceBuyingAreaController {
   }
 
   // [GET] /rice-buying-area/:id
-  show(req, res) {
+  showOne(req, res) {
     RiceBuyingArea.findById(req.params.id)
       .then((riceBuyingArea) => {
         res.json(riceBuyingArea).end();

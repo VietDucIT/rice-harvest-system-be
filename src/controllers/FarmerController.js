@@ -2,15 +2,15 @@ const Farmer = require("../models/Farmer");
 const User = require("../models/User");
 
 class FarmerController {
-  // ALL CONTROLLERS OF USER ???
+  // INHERITED ALL CONTROLLERS OF USER ???
 
-  // [GET] /farmer/list-by-name
-  showByName(req, res) {
-    // console.log("Get Farmer List by Name: ", req.params);
+  // [GET] /farmer/find-by-name
+  findByName(req, res) {
+    // console.log("Find Farmer by Name: ", req.query);
     User.find({
       $or: [
-        { name: { $regex: req.params.name } },
-        { nickname: { $regex: req.params.name } },
+        { name: { $regex: req.query.name } },
+        { nickname: { $regex: req.query.name } },
       ],
       role: 0,
     })
@@ -23,19 +23,19 @@ class FarmerController {
       });
   }
 
-  // [GET] /farmer/list-by-address
-  // village, commune, town, province
-  // showByAddress(req, res) {
-  //   // console.log("Get Farmer List by Address: ", req.params);
-  //   Farmer.find({ address: req.params.address })
-  //     .then((farmers) => {
-  //       res.json(farmers).end();
-  //     })
-  //     .catch((err) => {
-  //       res.status(500).end();
-  //       console.log(err);
-  //     });
-  // }
+  // [GET] /farmer/find-by-address
+  // village, commune, town, province  ???
+  findByAddress(req, res) {
+    // console.log("Find Farmer by Address: ", req.query);
+    User.find({ address: req.query.address, role: 0 })
+      .then((farmers) => {
+        res.json(farmers).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
 }
 
 module.exports = new FarmerController();

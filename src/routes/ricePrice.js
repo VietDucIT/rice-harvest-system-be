@@ -8,7 +8,7 @@ router.get("/check", ricePriceController.checkToUpdate);
 // router.get("/count-document", ricePriceController.count);
 router.get("/", ricePriceController.show);
 router.put("/update", ricePriceController.update);
-// router.put("/update-old-price", ricePriceController.updateOldPrice);
+// router.get("/update-old-price", ricePriceController.updateOldPrice);
 // router.put("/sort-posts", ricePriceController.sortPorts);
 // router.get('/:slug', ricePriceController.show);
 

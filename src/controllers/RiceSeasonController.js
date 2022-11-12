@@ -3,6 +3,23 @@ const { ObjectId } = require("mongodb");
 const RiceSeason = require("../models/RiceSeason");
 
 class RiceSeasonController {
+  // seasonName + seasonYear => name ???
+  // [GET] /rice-season/find-by-name
+  findByName(req, res) {
+    console.log("Find Rice Season by Name: ", req.query);
+    RiceSeason.find({
+      farmerId: new ObjectId(req.query.idFarmer),
+      seasonName: new RegExp(req.query.name),
+    })
+      .then((riceSeasons) => {
+        res.json(riceSeasons).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
+
   // [GET] /rice-season/farmer/:idFarmer
   showList(req, res) {
     // console.log("Get Rice Season List: ", req.params);
@@ -16,24 +33,8 @@ class RiceSeasonController {
       });
   }
 
-  // [GET] /rice-season/find/:idFarmer
-  showListByName(req, res) {
-    // console.log("Get Rice Season List by Name: ", req.params);
-    RiceSeason.find({
-      farmerId: new ObjectId(req.params.idFarmer),
-      name: req.params.name, // ????
-    })
-      .then((riceSeasons) => {
-        res.json(riceSeasons).end();
-      })
-      .catch((err) => {
-        res.status(500).end();
-        console.log(err);
-      });
-  }
-
   // [GET] /rice-season/:id
-  show(req, res) {
+  showOne(req, res) {
     RiceSeason.findById(req.params.id)
       .then((riceSeason) => {
         res.json(riceSeason).end();

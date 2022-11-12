@@ -31,18 +31,13 @@ const getTodayPost = async () => {
       } else {
         reject(error);
       }
-      // } else {
-      //   console.log(error);
-      //   reject(error);
-      // }
     });
   });
 };
 
 class RiceController {
   // [GET] /rice-price/prediction
-  async predict(req, res) {
-    // FIND PREDICTION, NEED TO ADD A FIELD TO SCHEMA ???
+  predict(req, res) {
     // console.log("Get prediction");
 
     // METHOD 1: USING NODEJS   => A bit difficult and not beautiful
