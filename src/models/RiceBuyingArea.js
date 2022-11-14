@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 
 const RiceBuyingArea = new Schema(
   {
-    // _id: { type: String },
     name: { type: String, required: true },
     village: { type: String, required: true },
     commune: { type: String, required: true },

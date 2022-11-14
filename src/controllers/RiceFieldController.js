@@ -25,7 +25,7 @@ class RiceFieldController {
     // console.log("Get Rice Field List by Farmer: ", req.params);
     RiceField.find({ farmerId: new ObjectId(req.params.idFarmer) })
       .then((riceFields) => {
-        console.log(riceFields);
+        // console.log(riceFields);
         res.json(riceFields).end();
       })
       .catch((err) => {

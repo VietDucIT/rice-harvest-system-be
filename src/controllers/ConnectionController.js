@@ -21,7 +21,7 @@ class ConnectionController {
     // console.log("Search Connections: ", req.params);
     Connection.find({
       idUser: new ObjectId(req.params.idUser),
-      farmerName: /`${req.params.name}`/, // ?????
+      farmerName: new RegExp(req.query.name),
     }) // OR idFarmer OR idTrader
       .then((connections) => {
         res.json(connections).end();

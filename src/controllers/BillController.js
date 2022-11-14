@@ -70,11 +70,11 @@ class BillController {
   // [POST] /bill/
   add(req, res) {
     // res.json(req.body);
-    // const BilldData = Object.assign(req.body);
-    // // console.log("Request Add Bill: ", BilldData);
+    // const billData = Object.assign(req.body);
+    // // console.log("Request Add Bill: ", billData);
     // let bill = new Bill({
-    //   ...BilldData,
-    //   suggestToBuyId: new ObjectId(BilldData.suggestToBuyId),
+    //   ...billData,
+    //   suggestToBuyId: new ObjectId(billData.suggestToBuyId),
     // });
     // console.log("Bill: ", bill);
 

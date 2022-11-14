@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 
 const RiceSeason = new Schema(
   {
-    // _id: { type: String },
     seasonName: { type: String, required: true },
     seasonYear: { type: Number, required: true },
     currentState: { type: String, required: true },
@@ -12,6 +11,9 @@ const RiceSeason = new Schema(
     timeEnd: { type: Date },
     totalRice: { type: Number },
     description: { type: String },
+
+    riceFieldName: { type: String },
+    riceName: { type: String },
 
     // suggestToBuys: [
     //   {

@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 
 const SuggestToBuy = new Schema(
   {
-    // _id: { type: String },
     suggestedPrice: { type: Number, required: true },
     suggestedTimeEnd: { type: Date, required: true },
     description: { type: String },

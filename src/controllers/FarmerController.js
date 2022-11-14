@@ -24,10 +24,14 @@ class FarmerController {
   }
 
   // [GET] /farmer/find-by-address
-  // village, commune, town, province  ???
   findByAddress(req, res) {
     // console.log("Find Farmer by Address: ", req.query);
-    User.find({ address: req.query.address, role: 0 })
+    const address = req.query.address;
+    let filterObject = { province: address.province, role: 0 };
+    if (address.town) filterObject.town = address.town;
+    if (address.commune) filterObject.commune = address.commune;
+    if (address.village) filterObject.village = address.village;
+    User.find(filterObject)
       .then((farmers) => {
         res.json(farmers).end();
       })

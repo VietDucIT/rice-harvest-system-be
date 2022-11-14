@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 
 const PredictionRicePrice = new Schema(
   {
-    // _id: { type: String },
     rice: { type: String, required: true },
     min: { type: Number },
     max: { type: Number },

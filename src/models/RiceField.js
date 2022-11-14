@@ -4,20 +4,11 @@ const Schema = mongoose.Schema;
 
 const RiceField = new Schema(
   {
-    // _id: { type: String },
     name: { type: String, required: true },
     village: { type: String, required: true },
     commune: { type: String, required: true },
     town: { type: String, required: true },
     province: { type: String, required: true },
-    // coords: [
-    //   {
-    //     points: {
-    //       x: { type: Number, required: true },
-    //       y: { type: Number, required: true },
-    //     },
-    //   },
-    // ],
     x1: { type: Number, required: true },
     y1: { type: Number, required: true },
     x2: { type: Number, required: true },

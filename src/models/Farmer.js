@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 
 const Farmer = new Schema(
   {
-    // _id: { type: String },
     name: { type: String, required: true },
     nickname: { type: String },
     gender: { type: Number, required: true },

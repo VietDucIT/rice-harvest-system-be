@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 
 const Notification = new Schema(
   {
-    // _id: { type: String },
     content: { type: String },
     status: { type: String }, // Unread/Read
 
