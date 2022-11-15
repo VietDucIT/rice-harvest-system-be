@@ -131,7 +131,7 @@ class RiceController {
         res.send(false).end();
       } else {
         try {
-          const urlTodayPost = getTodayPost();
+          const urlTodayPost = await getTodayPost();
           console.log("Need to update Rice Price.");
           res.send(true).end();
         } catch (error) {
@@ -263,53 +263,57 @@ class RiceController {
   async updateOldPrice(req, res) {
     const postArray = require("./src/data/posts.json");
 
-    for (let post of postArray) {
-      await request(post.link, (error, response, html) => {
-        if (!error && response.statusCode == 200) {
-          const $ = cheerio.load(html);
+    try {
+      for (let post of postArray) {
+        await request(post.link, (error, response, html) => {
+          if (!error && response.statusCode == 200) {
+            const $ = cheerio.load(html);
 
-          // get DATE of the post
-          const datetime = $(".article-date").text();
-          const index = datetime.indexOf(", ") + 2;
-          const date = datetime.slice(index, index + 10);
-          // console.log(date);
+            // get DATE of the post
+            const datetime = $(".article-date").text();
+            const index = datetime.indexOf(", ") + 2;
+            const date = datetime.slice(index, index + 10);
+            // console.log(date);
 
-          $(".__MASTERCMS_TABLE_DATA tr").first().remove(); // remove heading of table
-          $(".__MASTERCMS_TABLE_DATA tr").each((index, el) => {
-            let min, max, average;
-            const rice = $(el).find("td").find("p").first().text();
-            const price = $(el).find("td:nth-child(3)").find("p").text();
-            // console.log(rice + ": " + price);
+            $(".__MASTERCMS_TABLE_DATA tr").first().remove(); // remove heading of table
+            $(".__MASTERCMS_TABLE_DATA tr").each((index, el) => {
+              let min, max, average;
+              const rice = $(el).find("td").find("p").first().text();
+              const price = $(el).find("td:nth-child(3)").find("p").text();
+              // console.log(rice + ": " + price);
 
-            if (price.includes(" – ")) {
-              let index = price.indexOf(" – ");
-              min = parseInt(price.slice(0, index).replace(".", ""));
-              max = parseInt(price.slice(index + 3).replace(".", ""));
-              average = parseInt((min + max) / 2);
-            } else if (price.includes(" - ")) {
-              let index = price.indexOf(" - ");
-              min = parseInt(price.slice(0, index).replace(".", ""));
-              max = parseInt(price.slice(index + 3).replace(".", ""));
-              average = parseInt((min + max) / 2);
-            } else {
-              average = parseInt(price.replace(".", ""));
-            }
+              if (price.includes(" – ")) {
+                let index = price.indexOf(" – ");
+                min = parseInt(price.slice(0, index).replace(".", ""));
+                max = parseInt(price.slice(index + 3).replace(".", ""));
+                average = parseInt((min + max) / 2);
+              } else if (price.includes(" - ")) {
+                let index = price.indexOf(" - ");
+                min = parseInt(price.slice(0, index).replace(".", ""));
+                max = parseInt(price.slice(index + 3).replace(".", ""));
+                average = parseInt((min + max) / 2);
+              } else {
+                average = parseInt(price.replace(".", ""));
+              }
 
-            // save to database
-            const ricePrice = new RicePrice({
-              rice,
-              average,
-              date,
-              price, // can remove
-              min, // can remove
-              max, // can remove
+              // save to database
+              const ricePrice = new RicePrice({
+                rice,
+                average,
+                date,
+                price, // can remove
+                min, // can remove
+                max, // can remove
+              });
+              ricePrice.save();
             });
-            ricePrice.save();
-          });
-        } else {
-          console.log(error);
-        }
-      });
+          } else {
+            console.log(error);
+          }
+        });
+      }
+    } catch (err) {
+      console.log("Error from UpdateOldPrice: ", err);
     }
 
     res.sendStatus(200).end();

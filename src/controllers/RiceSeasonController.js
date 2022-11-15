@@ -6,32 +6,29 @@ class RiceSeasonController {
   // [GET] /rice-season/find-by-name
   findByName(req, res) {
     console.log("Find Rice Season by Name: ", req.query);
-    // const name = req.query.name.trim().toLowerCase();
-    // RiceSeason.find({
-    //   farmerId: new ObjectId(req.query.idFarmer),
-    // })
-    //   .then((riceSeasons) => {
-    //     let response = [];
-    //     for (let season of riceSeasons) {
-    //       let fullName = season.name + " " + season.year;
-    //       fullName = fullName.toLowerCase();
-    //       if (name.includes(fullName)) {
-    //         response.push(season);
-    //       }
-    //     }
-    //     res.json(response).end();
-    //   })
-    //   .catch((err) => {
-    //     res.status(500).end();
-    //     console.log(err);
-    //   });
+
     RiceSeason.find({
       farmerId: new ObjectId(req.query.idFarmer),
-      seasonName: req.query.name,
-      seasonYear: req.query.year,
     })
       .then((riceSeasons) => {
-        res.json(riceSeasons).end();
+        if (req.query.name == "Tất cả" && req.query.year == "Tất cả")
+          res.json(riceSeasons).end();
+        else {
+          let response = [];
+          for (let season of riceSeasons) {
+            const condition =
+              (req.query.name == "Tất cả" &&
+                season.seasonYear == req.query.year) ||
+              (req.query.year == "Tất cả" &&
+                season.seasonName == req.query.name) ||
+              (season.seasonName == req.query.name &&
+                season.seasonYear == req.query.year);
+            if (condition) {
+              response.push(season);
+            }
+          }
+          res.json(response).end();
+        }
       })
       .catch((err) => {
         res.status(500).end();

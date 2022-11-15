@@ -29,8 +29,8 @@ class RiceFieldController {
         res.json(riceFields).end();
       })
       .catch((err) => {
-        res.status(500).end();
         console.log(err);
+        res.status(500).end();
       });
   }
 
