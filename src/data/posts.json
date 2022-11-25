@@ -1,330 +1,97 @@
 [
-  {
-    "title": "Giá lúa gạo hôm nay 21/8 và nhìn lại tuần qua: Nhiều triển vọng từ thị trường Trung Quốc và châu Phi",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-218-va-nhin-lai-tuan-qua-nhieu-trien-vong-tu-thi-truong-trung-quoc-va-chau-phi-217697.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 22/8: Chờ đợi tín hiệu từ thị trường Trung Quốc, Philippines",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-228-cho-doi-tin-hieu-tu-thi-truong-trung-quoc-philippines-217751.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 23/8: Giá lúa nếp tăng 200 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-238-gia-lua-nep-tang-200-dongkg-217849.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 24/8: Giá lúa đồng loạt tăng",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-248-gia-lua-dong-loat-tang-217951.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 25/8: Giá lúa IR 504 quay đầu giảm, giao dịch gạo chậm",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-258-gia-lua-ir-504-quay-dau-giam-giao-dich-gao-cham-218058.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 26/8: Giá gạo tăng 50 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-268-gia-gao-tang-50-dongkg-218163.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 29/8: Giao dịch sôi động phiên đầu tuần",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-298-giao-dich-soi-dong-phien-dau-tuan-218383.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 30/8: Thị trường lúa gạo ổn định, sẽ sôi động trở lại vào tháng 10",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-308-thi-truong-lua-gao-on-dinh-se-soi-dong-tro-lai-vao-thang-10-218476.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 31/8: Tăng 200 đồng/kg với lúa nếp",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-318-tang-200-dongkg-voi-lua-nep-218575.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 1/9: Giá gạo sẽ sớm khởi sắc nhờ nhu cầu tăng",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-19-gia-gao-se-som-khoi-sac-nho-nhu-cau-tang-218703.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 2/9: Giá lúa hè thu dao động 5.400 – 6.000 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-29-gia-lua-he-thu-dao-dong-5400-6000-dongkg-218796.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 3/9: Xuất khẩu gạo sẽ tăng trưởng ổn định",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-39-xuat-khau-gao-se-tang-truong-on-dinh-218858.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 4/9 và nhìn lại tuần qua: Giá lúa nếp tăng 200 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-49-va-nhin-lai-tuan-qua-gia-lua-nep-tang-200-dongkg-218907.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 5/9: Giá gạo dao động quanh mốc 8.000 – 8.600 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-59-gia-gao-dao-dong-quanh-moc-8000-8600-dongkg-218953.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 6/9: Nhu cầu vẫn cao, gạo Việt đón nhiều tín hiệu tích cực",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-69-nhu-cau-van-cao-gao-viet-don-nhieu-tin-hieu-tich-cuc-219062.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 7/9: Giá lúa tiếp tục giảm 100 - 200 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-79-gia-lua-tiep-tuc-giam-100-200-dongkg-219160.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 8/9: Triển vọng từ thị trường Trung Quốc",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-89-trien-vong-tu-thi-truong-trung-quoc-219307.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 9/9: Giá lúa tăng, thị trường bớt trầm lắng",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-99-gia-lua-tang-thi-truong-bot-tram-lang-219415.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 10/9: Giá đi ngang phiên cuối tuần",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-109-gia-di-ngang-phien-cuoi-tuan-219537.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 11/9 và nhìn lại tuần qua: Nhiều tin vui cho gạo Việt",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-119-va-nhin-lai-tuan-qua-nhieu-tin-vui-cho-gao-viet-219594.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 12/9: Thị trường gạo thế giới sôi động",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-129-thi-truong-gao-the-gioi-soi-dong-219660.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 13/9: Thị trường sôi động, giá lúa gạo đồng loạt tăng",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-139-thi-truong-soi-dong-gia-lua-gao-dong-loat-tang-219790.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 14/9: Giá gạo xuất khẩu tăng 7 USD/tấn",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-149-gia-gao-xuat-khau-tang-7-usdtan-219904.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 15/9: Thị trường bớt trầm lắng",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-159-thi-truong-bot-tram-lang-220033.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 16/9: Thị trường trong nước chững lại, xuất khẩu sôi động",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-169-thi-truong-trong-nuoc-chung-lai-xuat-khau-soi-dong-220160.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 17/9: Giá gạo tăng từng ngày",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-179-gia-gao-tang-tung-ngay-220254.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 18/9 và nhìn lại tuần qua 12 – 18/9: Giá gạo tăng 200 – 400 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-189-va-nhin-lai-tuan-qua-12-189-gia-gao-tang-200-400-dongkg-220353.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 19/9: Sôi động phiên đầu tuần",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-199-soi-dong-phien-dau-tuan-220431.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 20/9: Cao nhất ở mức 9.050 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-209-cao-nhat-o-muc-9050-dongkg-220538.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 21/9: Xuất khẩu sôi động hơn",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-219-xuat-khau-soi-dong-hon-220652.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 22/9: Giá gạo liên tục tăng, giao dịch sôi động",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-229-gia-gao-lien-tuc-tang-giao-dich-soi-dong-220762.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 23/9: Nếp khô tăng mạnh 1.300 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-239-nep-kho-tang-manh-1300-dongkg-220869.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 24/9: Xu hướng tăng giá vẫn còn tiếp diễn",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-249-xu-huong-tang-gia-van-con-tiep-dien-220967.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 25/9 và tổng kết tuần 19 – 25/9 : Tăng mạnh nhất 1.300 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-259-va-tong-ket-tuan-19-259-tang-manh-nhat-1300-dongkg-221076.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 26/9: Giao dịch bớt trầm lắng",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-269-giao-dich-bot-tram-lang-221126.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 27/9: Nguồn cung giảm, giá gạo xuất khẩu tăng mạnh 23 USD/tấn",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-279-nguon-cung-giam-gia-gao-xuat-khau-tang-manh-23-usdtan-221272.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 28/9: Giá gạo đạt mức 8.650 – 9.200 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-289-gia-gao-dat-muc-8650-9200-dongkg-221376.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 29/9: Giá gạo xuất khẩu neo ở mức cao",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-299-gia-gao-xuat-khau-neo-o-muc-cao-221509.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 30/9: Giá gạo chững, giao dịch chậm lại",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-309-gia-gao-chung-giao-dich-cham-lai-221634.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 1/10: Giá lúa gạo đi ngang phiên cuối tuần",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-110-gia-lua-gao-di-ngang-phien-cuoi-tuan-221756.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 2/10 và tổng kết tuần qua: Giá lúa gạo trong nước và xuất khẩu đều tăng",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-210-va-tong-ket-tuan-qua-gia-lua-gao-trong-nuoc-va-xuat-khau-deu-tang-221829.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 3/10: Nguồn cung giảm, giá lúa gạo neo ở mức cao",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-310-nguon-cung-giam-gia-lua-gao-neo-o-muc-cao-221913.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 4/10: Giá lúa gạo tăng 100 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-410-gia-lua-gao-tang-100-dongkg-222042.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 5/10: Giá gạo xuất khẩu tăng 5 USD/tấn",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-510-gia-gao-xuat-khau-tang-5-usdtan-222141.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 6/10: Giá gạo xuất khẩu neo ở mức 428 USD/tấn",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-610-gia-gao-xuat-khau-neo-o-muc-428-usdtan-222278.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 7/10: Nguồn cung ít, nhà máy chào bán với giá cao",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-710-nguon-cung-it-nha-may-chao-ban-voi-gia-cao-222387.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 8/10: Gạo nguyên liệu tăng 50 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-810-gao-nguyen-lieu-tang-50-dongkg-222489.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 9/10 và tổng kết tuần qua: Gạo nội địa ổn định, xuất khẩu tăng 5 USD/tấn",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-910-va-tong-ket-tuan-qua-gao-noi-dia-on-dinh-xuat-khau-tang-5-usdtan-222557.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 10/10: Nhu cầu gạo tăng giúp giá lúa gạo neo cao",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-1010-nhu-cau-gao-tang-giup-gia-lua-gao-neo-cao-222638.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 11/10: Giá lúa gạo có xu hướng tăng, thị trường sôi động",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-1110-gia-lua-gao-co-xu-huong-tang-thi-truong-soi-dong-222817.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 12/10: Giá gạo tăng 100 – 150 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-1210-gia-gao-tang-100-150-dongkg-222947.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 13/10: Giá gạo dao động 8.950 – 9.550 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-1310-gia-gao-dao-dong-8950-9550-dongkg-223093.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 14/10: Giá gạo tiếp tục đà tăng",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-1410-gia-gao-tiep-tuc-da-tang-223200.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 15/10: Giá gạo xuất khẩu tăng 10 USD/tấn, thị trường sôi động",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-1510-gia-gao-xuat-khau-tang-10-usdtan-thi-truong-soi-dong-223352.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 16/10 và tổng kết tuần qua: Thị trường sôi động nhờ nhu cầu từ Trung Quốc, Philippines",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-1610-va-tong-ket-tuan-qua-thi-truong-soi-dong-nho-nhu-cau-tu-trung-quoc-philippines-223456.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 17/10: Thị trường lúa gạo sôi động trở lại",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-1710-thi-truong-lua-gao-soi-dong-tro-lai-223524.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 18/10: Giá gạo tiếp đà tăng",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-1810-gia-gao-tiep-da-tang-223636.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 19/10: Thị trường chậm lại, giá gạo xuất khẩu giảm 10 USD/tấn",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-1910-thi-truong-cham-lai-gia-gao-xuat-khau-giam-10-usdtan-223753.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 20/10: Đơn hàng nhiều, giá lúa gạo neo cao",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-2010-don-hang-nhieu-gia-lua-gao-neo-cao-223878.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 21/10: Triển vọng tốt từ thị trường Mỹ",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-2110-trien-vong-tot-tu-thi-truong-my-224003.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 22/10: Giá gạo dao động quanh mốc 9.100 – 9.750 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-2210-gia-gao-dao-dong-quanh-moc-9100-9750-dongkg-224149.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 23/10 và tổng kết tuần qua: Giá gạo nội địa tăng, xuất khẩu giảm",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-2310-va-tong-ket-tuan-qua-gia-gao-noi-dia-tang-xuat-khau-giam-224196.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 24/10: Thị trường bớt trầm lắng",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-2410-thi-truong-bot-tram-lang-224285.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 25/10: Giá lúa tăng 400 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-2510-gia-lua-tang-400-dongkg-224439.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 26/10: Giá lúa tiếp đà tăng 200 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-2610-gia-lua-tiep-da-tang-200-dongkg-224601.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 27/10: Giá lúa tăng 1.000 đồng/kg sau 3 phiên điều chỉnh",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-2710-gia-lua-tang-1000-dongkg-sau-3-phien-dieu-chinh-224746.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 28/10: Giá tiếp tục tăng, giao dịch với khách Trung Quốc, Indonesia sôi động",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-2810-gia-tiep-tuc-tang-giao-dich-voi-khach-trung-quoc-indonesia-soi-dong-224886.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 29/10: Tăng mạnh nhất 400 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-2910-tang-manh-nhat-400-dongkg-225018.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 30/10 và tổng kết tuần qua: Nguồn cung giảm, giá lúa tăng mạnh 1.000 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-3010-va-tong-ket-tuan-qua-nguon-cung-giam-gia-lua-tang-manh-1000-dongkg-225089.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 31/10: Giá lúa gạo neo ở mức cao",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-3110-gia-lua-gao-neo-o-muc-cao-225213.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 1/11: Giá gạo tăng 150 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-111-gia-gao-tang-150-dongkg-225337.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 2/11: Nguồn cung ít, giá lúa gạo neo ở mức cao",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-211-nguon-cung-it-gia-lua-gao-neo-o-muc-cao-225467.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 3/11: Kho cạn hàng, giá gạo tiếp tục tăng",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-311-kho-can-hang-gia-gao-tiep-tuc-tang-225575.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 4/11: Giá lúa OM 5451 tăng 100 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-411-gia-lua-om-5451-tang-100-dongkg-225742.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 5/11: Giá lúa gạo neo ở mức cao",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-511-gia-lua-gao-neo-o-muc-cao-225860.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 6/11 và tổng kết tuần qua: Giá lúa gạo liên tục điều chỉnh tăng",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-611-va-tong-ket-tuan-qua-gia-lua-gao-lien-tuc-dieu-chinh-tang-225934.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 7/11: Nguồn cung thấp, giá lúa gạo ở mức cao",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-711-nguon-cung-thap-gia-lua-gao-o-muc-cao-226018.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 8/11: Đài thơm 8 tăng 200 đồng/kg, còn lại đi ngang",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-811-dai-thom-8-tang-200-dongkg-con-lai-di-ngang-226159.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 9/11: Giá nếp tăng, gạo giảm",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-911-gia-nep-tang-gao-giam-226275.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 10/11: Giá lúa tăng 100 – 200 đồng/kg",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-1011-gia-lua-tang-100-200-dongkg-226406.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 11/11: Giá lúa thu đông neo ở mức cao",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-1111-gia-lua-thu-dong-neo-o-muc-cao-226543.html"
-  },
-  {
-    "title": "Giá lúa gạo hôm nay 12/11: Giá neo cao, thị trường giao dịch sôi động",
-    "link": "https://congthuong.vn/gia-lua-gao-hom-nay-1211-gia-neo-cao-thi-truong-giao-dich-soi-dong-226701.html"
-  }
+  "https://congthuong.vn/gia-lua-gao-hom-nay-218-va-nhin-lai-tuan-qua-nhieu-trien-vong-tu-thi-truong-trung-quoc-va-chau-phi-217697.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-228-cho-doi-tin-hieu-tu-thi-truong-trung-quoc-philippines-217751.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-238-gia-lua-nep-tang-200-dongkg-217849.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-248-gia-lua-dong-loat-tang-217951.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-258-gia-lua-ir-504-quay-dau-giam-giao-dich-gao-cham-218058.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-268-gia-gao-tang-50-dongkg-218163.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-298-giao-dich-soi-dong-phien-dau-tuan-218383.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-308-thi-truong-lua-gao-on-dinh-se-soi-dong-tro-lai-vao-thang-10-218476.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-318-tang-200-dongkg-voi-lua-nep-218575.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-19-gia-gao-se-som-khoi-sac-nho-nhu-cau-tang-218703.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-29-gia-lua-he-thu-dao-dong-5400-6000-dongkg-218796.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-39-xuat-khau-gao-se-tang-truong-on-dinh-218858.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-49-va-nhin-lai-tuan-qua-gia-lua-nep-tang-200-dongkg-218907.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-59-gia-gao-dao-dong-quanh-moc-8000-8600-dongkg-218953.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-69-nhu-cau-van-cao-gao-viet-don-nhieu-tin-hieu-tich-cuc-219062.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-79-gia-lua-tiep-tuc-giam-100-200-dongkg-219160.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-89-trien-vong-tu-thi-truong-trung-quoc-219307.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-99-gia-lua-tang-thi-truong-bot-tram-lang-219415.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-109-gia-di-ngang-phien-cuoi-tuan-219537.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-119-va-nhin-lai-tuan-qua-nhieu-tin-vui-cho-gao-viet-219594.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-129-thi-truong-gao-the-gioi-soi-dong-219660.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-139-thi-truong-soi-dong-gia-lua-gao-dong-loat-tang-219790.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-149-gia-gao-xuat-khau-tang-7-usdtan-219904.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-159-thi-truong-bot-tram-lang-220033.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-169-thi-truong-trong-nuoc-chung-lai-xuat-khau-soi-dong-220160.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-179-gia-gao-tang-tung-ngay-220254.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-189-va-nhin-lai-tuan-qua-12-189-gia-gao-tang-200-400-dongkg-220353.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-199-soi-dong-phien-dau-tuan-220431.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-209-cao-nhat-o-muc-9050-dongkg-220538.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-219-xuat-khau-soi-dong-hon-220652.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-229-gia-gao-lien-tuc-tang-giao-dich-soi-dong-220762.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-239-nep-kho-tang-manh-1300-dongkg-220869.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-249-xu-huong-tang-gia-van-con-tiep-dien-220967.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-259-va-tong-ket-tuan-19-259-tang-manh-nhat-1300-dongkg-221076.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-269-giao-dich-bot-tram-lang-221126.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-279-nguon-cung-giam-gia-gao-xuat-khau-tang-manh-23-usdtan-221272.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-289-gia-gao-dat-muc-8650-9200-dongkg-221376.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-299-gia-gao-xuat-khau-neo-o-muc-cao-221509.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-309-gia-gao-chung-giao-dich-cham-lai-221634.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-110-gia-lua-gao-di-ngang-phien-cuoi-tuan-221756.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-210-va-tong-ket-tuan-qua-gia-lua-gao-trong-nuoc-va-xuat-khau-deu-tang-221829.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-310-nguon-cung-giam-gia-lua-gao-neo-o-muc-cao-221913.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-410-gia-lua-gao-tang-100-dongkg-222042.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-510-gia-gao-xuat-khau-tang-5-usdtan-222141.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-610-gia-gao-xuat-khau-neo-o-muc-428-usdtan-222278.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-710-nguon-cung-it-nha-may-chao-ban-voi-gia-cao-222387.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-810-gao-nguyen-lieu-tang-50-dongkg-222489.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-910-va-tong-ket-tuan-qua-gao-noi-dia-on-dinh-xuat-khau-tang-5-usdtan-222557.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1010-nhu-cau-gao-tang-giup-gia-lua-gao-neo-cao-222638.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1110-gia-lua-gao-co-xu-huong-tang-thi-truong-soi-dong-222817.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1210-gia-gao-tang-100-150-dongkg-222947.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1310-gia-gao-dao-dong-8950-9550-dongkg-223093.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1410-gia-gao-tiep-tuc-da-tang-223200.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1510-gia-gao-xuat-khau-tang-10-usdtan-thi-truong-soi-dong-223352.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1610-va-tong-ket-tuan-qua-thi-truong-soi-dong-nho-nhu-cau-tu-trung-quoc-philippines-223456.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1710-thi-truong-lua-gao-soi-dong-tro-lai-223524.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1810-gia-gao-tiep-da-tang-223636.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1910-thi-truong-cham-lai-gia-gao-xuat-khau-giam-10-usdtan-223753.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-2010-don-hang-nhieu-gia-lua-gao-neo-cao-223878.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-2110-trien-vong-tot-tu-thi-truong-my-224003.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-2210-gia-gao-dao-dong-quanh-moc-9100-9750-dongkg-224149.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-2310-va-tong-ket-tuan-qua-gia-gao-noi-dia-tang-xuat-khau-giam-224196.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-2410-thi-truong-bot-tram-lang-224285.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-2510-gia-lua-tang-400-dongkg-224439.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-2610-gia-lua-tiep-da-tang-200-dongkg-224601.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-2710-gia-lua-tang-1000-dongkg-sau-3-phien-dieu-chinh-224746.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-2810-gia-tiep-tuc-tang-giao-dich-voi-khach-trung-quoc-indonesia-soi-dong-224886.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-2910-tang-manh-nhat-400-dongkg-225018.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-3010-va-tong-ket-tuan-qua-nguon-cung-giam-gia-lua-tang-manh-1000-dongkg-225089.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-3110-gia-lua-gao-neo-o-muc-cao-225213.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-111-gia-gao-tang-150-dongkg-225337.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-211-nguon-cung-it-gia-lua-gao-neo-o-muc-cao-225467.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-311-kho-can-hang-gia-gao-tiep-tuc-tang-225575.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-411-gia-lua-om-5451-tang-100-dongkg-225742.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-511-gia-lua-gao-neo-o-muc-cao-225860.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-611-va-tong-ket-tuan-qua-gia-lua-gao-lien-tuc-dieu-chinh-tang-225934.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-711-nguon-cung-thap-gia-lua-gao-o-muc-cao-226018.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-811-dai-thom-8-tang-200-dongkg-con-lai-di-ngang-226159.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-911-gia-nep-tang-gao-giam-226275.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1011-gia-lua-tang-100-200-dongkg-226406.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1111-gia-lua-thu-dong-neo-o-muc-cao-226543.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1211-gia-neo-cao-thi-truong-giao-dich-soi-dong-226701.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1311-va-tong-ket-tuan-qua-nguon-cung-thap-day-gia-lua-gao-neo-cao-226775.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1411-duy-tri-on-dinh-giao-dich-soi-dong-phien-dau-tuan-226838.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1511-nhu-cau-tang-day-gia-lua-gao-o-muc-cao-227024.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1611-tang-300-dongkg-voi-lua-om-18-227178.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1711-gia-gao-giam-100-200-dongkg-227298.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1811-gia-gao-tiep-tuc-da-giam-227451.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-1911-gia-gao-chung-lai-thi-truong-bot-tram-lang-227586.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-2011-va-tong-ket-tuan-qua-gia-lua-tang-gao-giam-227640.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-2111-trien-vong-lon-tu-thi-truong-chau-au-va-trung-quoc-227738.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-2211-gia-gao-nguyen-lieu-tang-tro-lai-227923.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-2311-gia-gao-xuat-khau-tang-10-usdtan-228066.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-2411-nguon-cung-khan-hiem-day-gia-gao-tang-cao-228256.html",
+  "https://congthuong.vn/gia-lua-gao-hom-nay-2511-nhu-cau-cao-gia-gao-tiep-tuc-tang-228457.html"
 ]

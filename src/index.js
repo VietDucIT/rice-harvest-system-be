@@ -17,7 +17,7 @@ app.use(morgan("combined"));
 // middleware
 app.use(express.urlencoded({ extended: true }));
 
-var whitelist = ["http://192.168.0.103"];
+var whitelist = ["http://192.168.0.103", "http://192.168.0.105"];
 var corsOptionsDelegate = function (req, callback) {
   var corsOptions;
   if (whitelist.indexOf(req.header("Origin")) !== -1) {
