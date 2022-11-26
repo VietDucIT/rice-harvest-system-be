@@ -1,3 +1,4 @@
+// To run: node ./src/services/manual/addOldPrices.js
 const cheerio = require("cheerio");
 const request = require("request-promise");
 
@@ -7,6 +8,7 @@ const postArray = require("../../data/posts.json");
 
 try {
   for (let post of postArray) {
+    console.log(post);
     request(post, (error, response, html) => {
       if (!error && response.statusCode == 200) {
         const $ = cheerio.load(html);
@@ -43,9 +45,11 @@ try {
               // save to database
               const ricePrice = new RicePrice({
                 rice,
+                price,
                 average,
                 date,
               });
+              console.log(ricePrice);
               ricePrice.save();
             });
           }

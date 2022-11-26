@@ -1,3 +1,4 @@
+// To run: node ./src/services/manual/addOldPosts.js
 const cheerio = require("cheerio");
 const request = require("request-promise");
 const fs = require("fs");

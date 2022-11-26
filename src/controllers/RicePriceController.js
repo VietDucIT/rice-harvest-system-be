@@ -142,21 +142,137 @@ class RiceController {
     });
   }
 
+  // [GET] /rice-price/add-old-posts
+  addOldPosts(req, res) {
+    let postArray = require("../data/posts.json");
+
+    // check whether a post is in postArray[]
+    const checkExisted = (link) => {
+      for (let post of postArray) {
+        if (post == link) {
+          return true;
+        }
+      }
+      return false;
+    };
+
+    // get post list from website and save to postArray (if not saved)
+    request(urlTopic, (error, response, html) => {
+      if (!error && response.statusCode == 200) {
+        let postLink;
+        let postListOnWeb = [];
+        const $ = cheerio.load(html);
+
+        $(".article").each((index, el) => {
+          postLink = $(el).find(".article-link").attr("href");
+          // postTitle = $(el).find(".article-link").attr("title");
+
+          if (
+            postLink.includes(`https://congthuong.vn/gia-lua-gao-hom-nay`) &&
+            !checkExisted(postLink)
+          ) {
+            postListOnWeb.push(postLink);
+          }
+        });
+
+        postArray = [...postArray, ...postListOnWeb.reverse()];
+        fs.writeFileSync("./src/data/posts.json", JSON.stringify(postArray));
+      } else {
+        console.log("Error from addOldPosts: ", error);
+      }
+    });
+
+    res.sendStatus(200).end();
+  }
+
+  // [GET] /rice-price/add-old-prices
+  addOldPrices(req, res) {
+    let postArray = require("../data/posts.json");
+
+    try {
+      for (let post of postArray) {
+        request(post, (error, response, html) => {
+          if (!error && response.statusCode == 200) {
+            const $ = cheerio.load(html);
+
+            // get DATE of the post
+            const datetime = $(".article-date").text();
+            const index = datetime.indexOf(", ") + 2;
+            const date = datetime.slice(index, index + 10);
+            // console.log(date);
+
+            RicePrice.countDocuments({ date: date }, function (err, count) {
+              if (count == 0) {
+                $(".__MASTERCMS_TABLE_DATA tr").first().remove(); // remove heading of table
+                $(".__MASTERCMS_TABLE_DATA tr").each((index, el) => {
+                  let min, max, average;
+                  const rice = $(el).find("td").find("p").first().text();
+                  const price = $(el).find("td:nth-child(3)").find("p").text();
+                  // console.log(rice + ": " + price);
+
+                  if (price.includes(" – ")) {
+                    let index = price.indexOf(" – ");
+                    min = parseInt(price.slice(0, index).replace(".", ""));
+                    max = parseInt(price.slice(index + 3).replace(".", ""));
+                    average = parseInt((min + max) / 2);
+                  } else if (price.includes(" - ")) {
+                    let index = price.indexOf(" - ");
+                    min = parseInt(price.slice(0, index).replace(".", ""));
+                    max = parseInt(price.slice(index + 3).replace(".", ""));
+                    average = parseInt((min + max) / 2);
+                  } else {
+                    average = parseInt(price.replace(".", ""));
+                  }
+
+                  // save to database
+                  const excludeRices = ["Tấm khô IR 504", "Cám khô IR 504"];
+                  if (!excludeRices.includes(rice)) {
+                    const ricePrice = new RicePrice({
+                      rice,
+                      price,
+                      average,
+                      date,
+                    });
+                    ricePrice.save();
+                  }
+                });
+              }
+            });
+          } else {
+            console.log(error);
+          }
+        });
+      }
+    } catch (err) {
+      console.log("Error from addOldPrices: ", err);
+    }
+
+    res.sendStatus(200).end();
+  }
+
   // [GET] /rice-price/
   show(req, res) {
+    // today
     const currentTime = new Date();
-
     const yyyy = currentTime.getFullYear();
     let mm = currentTime.getMonth() + 1;
     let dd = currentTime.getDate();
-
     if (dd < 10) dd = "0" + dd;
     if (mm < 10) mm = "0" + mm;
     const today = dd + "/" + mm + "/" + yyyy;
 
-    RicePrice.find({ date: today })
+    // yesterday
+    const yesterdayTime = new Date(Date.now() - 86400000); // 24*60*60*1000
+    const yyyy1 = yesterdayTime.getFullYear();
+    let mm1 = yesterdayTime.getMonth() + 1;
+    let dd1 = yesterdayTime.getDate();
+    if (dd1 < 10) dd1 = "0" + dd1;
+    if (mm1 < 10) mm1 = "0" + mm1;
+    const yesterday = dd1 + "/" + mm1 + "/" + yyyy1;
+
+    RicePrice.find({ date: { $in: [today, yesterday] } })
       .then((rice) => {
-        // console.log(rice);
+        console.log(rice);
         res.json(rice).end();
       })
       .catch((err) => {
@@ -219,18 +335,12 @@ class RiceController {
             const ricePrice = new RicePrice({
               rice,
               price,
-              min,
-              max,
               average,
               date,
               // isDeleted: false,
             });
             // console.log("Rice Price: ", ricePrice);
             ricePrice.save();
-
-            // save to file data.json
-            // data.push({ rice, price });
-            // fs.writeFileSync("./src/data/data.json", JSON.stringify(data));
           });
         } else {
           console.log(error);

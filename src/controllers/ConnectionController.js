@@ -54,9 +54,6 @@ class ConnectionController {
       farmerId: new ObjectId(connectionData.farmerId), // OR idFarmer
       traderId: new ObjectId(connectionData.traderId), // OR idTrader
     });
-    // const connection = new Connection(req.body);
-    // connection.farmerId = new ObjectId(connection.idFarmer);
-    // connection.traderId = new ObjectId(connection.idTrader);
     // console.log("Connection: ", connection);
 
     connection
