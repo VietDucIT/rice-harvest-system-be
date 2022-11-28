@@ -271,9 +271,16 @@ class RiceController {
     const yesterday = dd1 + "/" + mm1 + "/" + yyyy1;
 
     RicePrice.find({ date: { $in: [today, yesterday] } })
-      .then((rice) => {
-        console.log(rice);
-        res.json(rice).end();
+      .then((rices) => {
+        // console.log(rice);
+        let todayList = [];
+        let yesterdayList = [];
+        for (let rice of rices) {
+          if (rice.date == today) todayList.push(rice);
+          else yesterdayList.push(rice);
+        }
+        if (todayList.length > 0) res.json(todayList).end();
+        else if (todayList.length > 0) res.json(yesterdayList).end();
       })
       .catch((err) => {
         res.status(500).end();
@@ -332,15 +339,16 @@ class RiceController {
             }
 
             // save to database
-            const ricePrice = new RicePrice({
-              rice,
-              price,
-              average,
-              date,
-              // isDeleted: false,
-            });
-            // console.log("Rice Price: ", ricePrice);
-            ricePrice.save();
+            const excludeRices = ["Tấm khô IR 504", "Cám khô IR 504"];
+            if (!excludeRices.includes(rice)) {
+              const ricePrice = new RicePrice({
+                rice,
+                price,
+                average,
+                date,
+              });
+              ricePrice.save();
+            }
           });
         } else {
           console.log(error);
