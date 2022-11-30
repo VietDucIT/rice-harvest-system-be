@@ -1,5 +1,5 @@
 const billRouter = require("./bill");
-const connectionRouter = require("./connection");
+const contactRouter = require("./contact");
 const farmerRouter = require("./farmer");
 const notificationRouter = require("./notification");
 const riceRouter = require("./rice");
@@ -13,7 +13,7 @@ const userRouter = require("./user");
 
 function route(app) {
   app.use("/bill", billRouter);
-  app.use("/connection", connectionRouter);
+  app.use("/contact", contactRouter);
   app.use("/farmer", farmerRouter);
   app.use("/notification", notificationRouter);
   app.use("/rice", riceRouter);

@@ -4,3 +4,7 @@ $ python -m pip install -r ./src/services/requirements.txt
 
 $ python -m pip install <library>
 $ python -m pip install --upgrade pip
+
+> use <DB_NAME>
+> db.<collection_name>.deleteMany({date: '20/11/2022'})
+

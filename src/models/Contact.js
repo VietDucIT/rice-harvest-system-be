@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const Connection = new Schema(
+const Contact = new Schema(
   {
     status: { type: String },
 
@@ -15,4 +15,4 @@ const Connection = new Schema(
   }
 );
 
-module.exports = mongoose.model("Connection", Connection);
+module.exports = mongoose.model("Contact", Contact);
