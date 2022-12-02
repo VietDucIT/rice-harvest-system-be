@@ -11,6 +11,8 @@ class FarmerController {
       $or: [
         { name: { $regex: req.query.name } },
         { nickname: { $regex: req.query.name } },
+        // { normalizeName: { $regex: req.query.name } },
+        // { normalizeNickname: { $regex: req.query.name } },
       ],
       role: 0,
     })

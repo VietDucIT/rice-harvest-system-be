@@ -2,6 +2,8 @@ const { ObjectId } = require("mongodb");
 
 const User = require("../models/User");
 
+const normalizeVietnamese = require("../services/normalizeVietnamese");
+
 class UserController {
   // [GET] /user/check-unique-phone
   checkPhone(req, res) {
@@ -49,6 +51,9 @@ class UserController {
     // res.json(req.body);
     const user = new User(req.body);
     console.log("User BE: ", user);
+
+    user.normalizeName = normalizeVietnamese(user.name);
+    user.normalizeNickName = normalizeVietnamese(user.nickname);
 
     user
       .save()

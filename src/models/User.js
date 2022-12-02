@@ -4,8 +4,10 @@ const Schema = mongoose.Schema;
 
 const User = new Schema(
   {
-    name: { type: String },
+    name: { type: String, required: true },
     nickname: { type: String },
+    normalizeName: { type: String },
+    normalizeNickName: { type: String },
     gender: { type: Number },
     birthYear: { type: String },
     village: { type: String },

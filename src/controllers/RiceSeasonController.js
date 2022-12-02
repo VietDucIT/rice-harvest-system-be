@@ -41,6 +41,7 @@ class RiceSeasonController {
     // console.log("Get Rice Season List: ", req.params);
     RiceSeason.find({ farmerId: new ObjectId(req.params.idFarmer) })
       .then((riceSeasons) => {
+        // console.log("Rice Season List: ", riceSeasons);
         res.json(riceSeasons).end();
       })
       .catch((err) => {
@@ -66,14 +67,15 @@ class RiceSeasonController {
     // res.json(req.body);
     // JUST A TEMPORARY SOLUTION, WILL REMOVE IF FINDING A BETTER ONE
     const riceSeasonData = Object.assign(req.body);
-    console.log("Request Add Rice Season: ", riceSeasonData);
+    // console.log("Request Add Rice Season: ", riceSeasonData);
     let riceSeason = new RiceSeason({
       ...riceSeasonData,
       farmerId: new ObjectId(riceSeasonData.farmerId),
     });
     // RIGHT SOLUTION, BUT DIFFICULT TO GET DATA FROM OTHER COLLECTIONS
     // const riceSeason = new RiceSeason(req.body);
-    console.log("Rice Season: ", riceSeason);
+
+    // console.log("Rice Season: ", riceSeason);
 
     riceSeason
       .save()
