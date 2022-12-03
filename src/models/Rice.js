@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const Rice = new Schema(
   {
     name: { type: String, required: true },
+    normalizedName: { type: String },
     growingTime: { type: Number },
     description: { type: String },
   },

@@ -2,6 +2,8 @@ const { ObjectId } = require("mongodb");
 
 const Contact = require("../models/Contact");
 
+const normalizeVietnamese = require("../services/normalizeVietnamese");
+
 class ContactController {
   // [GET] /contact/user/:idUser
   showList(req, res) {
@@ -19,10 +21,27 @@ class ContactController {
   // [GET] /contact/find/:idUser
   showListByName(req, res) {
     // console.log("Search Contacts: ", req.params);
+    let searchedName = req.query.name;
+    searchedName = searchedName.trim().replace(/\s+/g, " "); // remove abandoned whitespaces
+    let normalizedSearchedName = normalizeVietnamese(searchedName);
+    // console.log(searchedName, normalizedSearchedName);
+
     Contact.find({
-      idUser: new ObjectId(req.params.idUser),
-      farmerName: new RegExp(req.query.name),
-    }) // OR idFarmer OR idTrader
+      userId: new ObjectId(req.params.idUser),
+      $or: [
+        {
+          userNormalizedName2: {
+            $regex: new RegExp(normalizedSearchedName, "i"),
+          },
+        },
+        {
+          userNormalizedNickname2: {
+            $regex: new RegExp(normalizedSearchedName, "i"),
+          },
+        },
+      ],
+      // normalizedName: { $regex: new RegExp(normalizedSearchedName, "i") },
+    })
       .then((contacts) => {
         res.json(contacts).end();
       })

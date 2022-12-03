@@ -6,17 +6,17 @@ const User = new Schema(
   {
     name: { type: String, required: true },
     nickname: { type: String },
-    normalizeName: { type: String },
-    normalizeNickName: { type: String },
-    gender: { type: Number },
+    normalizedName: { type: String },
+    normalizedNickname: { type: String },
+    gender: { type: Number, required: true },
     birthYear: { type: String },
-    village: { type: String },
-    commune: { type: String },
-    town: { type: String },
-    province: { type: String },
-    role: { type: Number },
-    phone: { type: String }, // userName
-    password: { type: String },
+    village: { type: String, required: true },
+    commune: { type: String, required: true },
+    town: { type: String, required: true },
+    province: { type: String, required: true },
+    role: { type: Number, required: true },
+    phone: { type: String, required: true }, // userName
+    password: { type: String, required: true },
     // avatar: { type: String, required: true },
   },
   {

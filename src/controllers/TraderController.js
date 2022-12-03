@@ -1,15 +1,27 @@
 const Trader = require("../models/Trader");
+const User = require("../models/User");
+
+const normalizeVietnamese = require("../services/normalizeVietnamese");
 
 class TraderController {
-  // ALL CONTROLLERS OF USER ???
+  // INHERITED ALL CONTROLLERS OF USER ???
 
   // [GET] /trader/list-by-name
   showByName(req, res) {
     // console.log("Get Trader List by Name: ", req.params);
-    Trader.find({
+    let searchedName = req.query.name;
+    searchedName = searchedName.trim().replace(/\s+/g, " "); // remove abandoned whitespaces
+    let normalizedSearchedName = normalizeVietnamese(searchedName);
+    // console.log(searchedName, normalizedSearchedName);
+
+    User.find({
       $or: [
-        { name: { $regex: req.params.name } },
-        { nickname: { $regex: req.params.name } },
+        { normalizedName: { $regex: new RegExp(normalizedSearchedName, "i") } },
+        {
+          normalizedNickname: {
+            $regex: new RegExp(normalizedSearchedName, "i"),
+          },
+        },
       ],
     })
       .then((traders) => {

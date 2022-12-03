@@ -5,13 +5,18 @@ const RiceBuyingArea = require("../models/RiceBuyingArea");
 class RiceBuyingAreaController {
   // [GET] /rice-buying-area/find-by-name
   findByName(req, res) {
-    console.log("Find Rice Buying Area by Name: ", req.query);
+    // console.log("Find Rice Buying Area by Name: ", req.query);
+    let searchedName = req.query.name;
+    searchedName = searchedName.trim().replace(/\s+/g, " "); // remove abandoned whitespaces
+    let normalizedSearchedName = normalizeVietnamese(searchedName);
+    // console.log(searchedName, normalizedSearchedName);
+
     RiceBuyingArea.find({
       traderId: new ObjectId(req.query.idTrader),
-      name: new RegExp(req.query.name),
+      normalizedName: { $regex: new RegExp(normalizedSearchedName, "i") },
     })
       .then((riceBuyingAreas) => {
-        console.log("From find Rice Buying Area by Name: ", riceBuyingAreas);
+        console.log("From finding Rice Buying Area by Name: ", riceBuyingAreas);
         res.json(riceBuyingAreas).end();
       })
       .catch((err) => {

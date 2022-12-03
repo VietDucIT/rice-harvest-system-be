@@ -6,6 +6,8 @@ const Trader = new Schema(
   {
     name: { type: String, required: true },
     nickname: { type: String },
+    normalizedName: { type: String },
+    normalizedNickname: { type: String },
     gender: { type: Number, required: true },
     birthYear: { type: Number, required: true },
     village: { type: String, required: true },

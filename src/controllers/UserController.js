@@ -1,4 +1,5 @@
 const { ObjectId } = require("mongodb");
+const crypto = require("crypto");
 
 const User = require("../models/User");
 
@@ -52,8 +53,8 @@ class UserController {
     const user = new User(req.body);
     console.log("User BE: ", user);
 
-    user.normalizeName = normalizeVietnamese(user.name);
-    user.normalizeNickName = normalizeVietnamese(user.nickname);
+    user.normalizedName = normalizeVietnamese(user.name);
+    user.normalizedNickname = normalizeVietnamese(user.nickname);
 
     user
       .save()

@@ -2,16 +2,23 @@ const { ObjectId } = require("mongodb");
 
 const RiceField = require("../models/RiceField");
 
+const normalizeVietnamese = require("../services/normalizeVietnamese");
+
 class RiceFieldController {
   // [GET] /rice-field/find-by-name
   findByName(req, res) {
-    console.log("Find Rice Field by Name: ", req.query);
+    // console.log("Find Rice Field by Name: ", req.query);
+    let searchedName = req.query.name;
+    searchedName = searchedName.trim().replace(/\s+/g, " "); // remove abandoned whitespaces
+    let normalizedSearchedName = normalizeVietnamese(searchedName);
+    // console.log(searchedName, normalizedSearchedName);
+
     RiceField.find({
       farmerId: new ObjectId(req.query.idFarmer),
-      name: new RegExp(req.query.name),
+      normalizedName: { $regex: new RegExp(normalizedSearchedName, "i") },
     })
       .then((riceFields) => {
-        console.log("From find Rice Field by Name: ", riceFields);
+        console.log("From finding Rice Field by Name: ", riceFields);
         res.json(riceFields).end();
       })
       .catch((err) => {
