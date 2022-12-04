@@ -6,11 +6,9 @@ const RicePrice = new Schema(
   {
     rice: { type: String, required: true },
     price: { type: String },
-    min: { type: Number },
-    max: { type: Number },
     average: { type: Number },
     date: { type: String },
-    isDeleted: { type: Boolean },
+    // isDeleted: { type: Boolean },
 
     // riceId: { type: Schema.Types.ObjectId, ref: "Rice" },
   },

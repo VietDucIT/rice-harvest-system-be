@@ -65,13 +65,17 @@ class ContactController {
 
   // [POST] /contact/
   add(req, res) {
-    // res.json(req.body);
     const contactData = Object.assign(req.body);
     // console.log("Request Add Contact: ", contactData);
     let contact = new Contact({
-      ...contactData,
-      farmerId: new ObjectId(contactData.farmerId), // OR idFarmer
-      traderId: new ObjectId(contactData.traderId), // OR idTrader
+      userId: new ObjectId(contactData.userId),
+      userId2: new ObjectId(contactData._id),
+      userName2: contactData.name,
+      userNickname2: contactData.nickname,
+      userNormalizedName2: contactData.normalizedName,
+      userNormalizedNickname2: contactData.normalizedNickname,
+      // farmerId: new ObjectId(contactData.farmerId), // OR idFarmer
+      // traderId: new ObjectId(contactData.traderId), // OR idTrader
     });
     // console.log("Contact: ", contact);
 

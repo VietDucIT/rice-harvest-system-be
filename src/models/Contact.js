@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 
 const Contact = new Schema(
   {
-    status: { type: String },
     userId: { type: Schema.Types.ObjectId, ref: "User" },
 
     userId2: { type: Schema.Types.ObjectId, ref: "User" },
@@ -13,6 +12,7 @@ const Contact = new Schema(
     userNormalizedName2: { type: String },
     userNormalizedNickname2: { type: String },
 
+    status: { type: String },
     // farmerId: { type: Schema.Types.ObjectId, ref: "Farmer" },
     // traderId: { type: Schema.Types.ObjectId, ref: "Trader" },
   },

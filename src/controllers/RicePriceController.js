@@ -322,7 +322,7 @@ class RiceController {
             let min, max, average;
             const rice = $(el).find("td").find("p").first().text();
             const price = $(el).find("td:nth-child(3)").find("p").text();
-            // console.log(rice + ": " + price);
+            console.log(rice + ": " + price);
 
             if (price.includes(" – ")) {
               let index = price.indexOf(" – ");
@@ -340,13 +340,14 @@ class RiceController {
 
             // save to database
             const excludeRices = ["Tấm khô IR 504", "Cám khô IR 504"];
-            if (!excludeRices.includes(rice)) {
+            if (rice && !excludeRices.includes(rice)) {
               const ricePrice = new RicePrice({
                 rice,
                 price,
                 average,
                 date,
               });
+              // console.log(ricePrice);
               ricePrice.save();
             }
           });
