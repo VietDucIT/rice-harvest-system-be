@@ -19,7 +19,7 @@ class SuggestToBuyController {
   // [GET] /suggest-to-buy/season/:idRiceSeason
   showListForRiceSeason(req, res) {
     // console.log("Get Suggest To Buy List by Rice Season: ", req.params);
-    SuggestToBuy.find({ riceSeasonId: req.params.idRiceSeason })
+    SuggestToBuy.find({ seasonId: new ObjectId(req.params.idRiceSeason) })
       .then((suggestToBuys) => {
         res.json(suggestToBuys).end();
       })

@@ -18,6 +18,26 @@ class ContactController {
       });
   }
 
+  // [GET] /contact/check/:idUser
+  checkIfContacted(req, res) {
+    Contact.countDocuments(
+      {
+        userId: new ObjectId(req.params.idUser),
+        userId2: new ObjectId(req.query.idUser2),
+      },
+      function (err, count) {
+        if (err) {
+          res.status(500).end();
+          console.log(err);
+        } else if (count == 0) {
+          res.send(false).end();
+        } else {
+          res.send(true).end();
+        }
+      }
+    );
+  }
+
   // [GET] /contact/find/:idUser
   showListByName(req, res) {
     // console.log("Search Contacts: ", req.params);

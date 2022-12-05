@@ -6,17 +6,18 @@ const User = require("../models/User");
 const normalizeVietnamese = require("../services/normalizeVietnamese");
 
 class UserController {
-  // [GET] /user/check-unique-phone
+  // [GET] /user/check-existed-phone
   checkPhone(req, res) {
-    User.findOne({ phone: req.query.phone })
-      .then((user) => {
-        console.log(`This user has ${phone}: `, user);
-        res.send(true).end();
-      })
-      .catch((err) => {
-        res.send(false).end();
+    User.countDocuments({ phone: req.query.phone }, function (err, count) {
+      if (err) {
+        res.status(500).end();
         console.log(err);
-      });
+      } else if (count == 0) {
+        res.send(false).end();
+      } else {
+        res.send(true).end();
+      }
+    });
   }
 
   // [GET] /user/:id

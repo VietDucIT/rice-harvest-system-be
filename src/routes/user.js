@@ -3,7 +3,7 @@ const router = express.Router();
 
 const userController = require("../controllers/UserController");
 
-router.get("/check-unique-phone", userController.checkPhone);
+router.get("/check-existed-phone", userController.checkPhone);
 router.get("/:id", userController.show);
 router.post("/login", userController.logIn);
 router.post("/", userController.add);

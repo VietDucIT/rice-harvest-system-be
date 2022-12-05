@@ -10,6 +10,17 @@ const SuggestToBuy = new Schema(
     status: { type: String },
     traderId: { type: String },
 
+    // Field of season
+    seasonId: { type: Schema.Types.ObjectId, ref: "RiceSeason" },
+    seasonState: { type: String },
+    seasonFarmerId: { type: Schema.Types.ObjectId, ref: "Farmer" },
+    seasonRiceFieldName: { type: String },
+    seasonRiceName: { type: String },
+    seasonName: { type: String },
+    seasonYear: { type: Number },
+    seasonTimeEnd: { type: String },
+    seasonTimeStart: { type: String },
+
     riceSeasonId: { type: Schema.Types.ObjectId, ref: "RiceSeason" },
     traderId: { type: Schema.Types.ObjectId, ref: "Trader" },
   },
