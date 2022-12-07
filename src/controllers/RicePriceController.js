@@ -38,7 +38,7 @@ const getTodayPost = async () => {
 class RiceController {
   // [GET] /rice-price/prediction
   predict(req, res) {
-    // console.log("Get prediction");
+    console.log("Get prediction");
 
     // METHOD 1: USING NODEJS   => A bit difficult and not beautiful
     // const timeseries = require("timeseries-analysis");

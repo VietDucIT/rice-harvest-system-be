@@ -44,13 +44,14 @@ rmse_DT8 = sqrt(mean_squared_error(test_DT8, predictions_DT8))
 print('Test RMSE Dai Thom 8: %d' % rmse_DT8)
 
 ## Show line chart
-# pyplot.plot(test_DT8)												# Thực tế
-# pyplot.plot(predictions_DT8, color='red')		# Dự báo
-# pyplot.title("Biểu đồ dự báo giá lúa")
-# pyplot.xlabel("Ngày")
-# pyplot.ylabel("Giá lúa (đồng/kg)")
+# pyplot.plot(test_DT8, label='Thực tế')												# Thực tế
+# pyplot.plot(predictions_DT8, color='red', label='Dự báo')			# Dự báo
+# pyplot.title('Biểu đồ dự báo giá lúa')
+# pyplot.xlabel('Ngày')
+# pyplot.ylabel('Giá lúa (đồng/kg)')
 # # pyplot.xticks(np.arange(0,8,1))
 # # pyplot.yticks(np.arange(11, 17, 0.5))
+# pyplot.legend()				# To show name of lines
 # pyplot.show()
 
 
@@ -177,9 +178,9 @@ print('Test RMSE OM5451: %d' % rmse_OM5451)
 ## Show line chart
 # pyplot.plot(test)												# Thực tế
 # pyplot.plot(predictions, color='red')		# Dự báo
-# pyplot.title("Biểu đồ dự báo giá lúa")
-# pyplot.xlabel("Ngày")
-# pyplot.ylabel("Giá lúa (đồng/kg)")
+# pyplot.title('Biểu đồ dự báo giá lúa')
+# pyplot.xlabel('Ngày')
+# pyplot.ylabel('Giá lúa (đồng/kg)')
 # # pyplot.xticks(np.arange(0,8,1))
 # # pyplot.yticks(np.arange(11, 17, 0.5))
 # pyplot.show()
