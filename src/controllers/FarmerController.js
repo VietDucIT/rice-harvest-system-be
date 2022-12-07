@@ -4,8 +4,6 @@ const User = require("../models/User");
 const normalizeVietnamese = require("../services/normalizeVietnamese");
 
 class FarmerController {
-  // INHERITED ALL CONTROLLERS OF USER ???
-
   // [GET] /farmer/find-by-name
   findByName(req, res) {
     // console.log("Find Farmer by Name: ", req.query);

@@ -69,18 +69,14 @@ class BillController {
 
   // [POST] /bill/
   add(req, res) {
-    // res.json(req.body);
     // const billData = Object.assign(req.body);
-    // // console.log("Request Add Bill: ", billData);
     // let bill = new Bill({
     //   ...billData,
     //   suggestToBuyId: new ObjectId(billData.suggestToBuyId),
     // });
-    // console.log("Bill: ", bill);
 
     const bill = new Bill(req.body);
     // bill.suggestToBuyId = new ObjectId(bill.suggestToBuyId);
-    // console.log("Bill: ", bill);
 
     bill
       .save()
@@ -95,7 +91,6 @@ class BillController {
 
   // [PUT] /bill/:id
   modify(req, res) {
-    // res.json(req.body);
     Bill.updateOne({ _id: req.params.id }, req.body)
       .then(() => {
         res.sendStatus(200).end();
@@ -105,20 +100,6 @@ class BillController {
         console.log(err);
       });
   }
-
-  // [DELETE] /bill/:id
-  // delete(req, res) {
-  //   // res.json(req.body);
-  //   // console.log("Request Delete Bill: ", req.params);
-  //   Bill.deleteOne({ _id: req.params.id })
-  //     .then(() => {
-  //       res.sendStatus(200).end();
-  //     })
-  //     .catch((err) => {
-  //       res.status(500).end();
-  //       console.log(err);
-  //     });
-  // }
 }
 
 module.exports = new BillController();

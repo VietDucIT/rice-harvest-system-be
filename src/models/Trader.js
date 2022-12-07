@@ -17,7 +17,6 @@ const Trader = new Schema(
     role: { type: Number, required: true },
     phone: { type: String, required: true }, // userName
     password: { type: String, required: true },
-    // avatar: { type: String, required: true },
 
     riceBuyingAreaIds: [{ type: Schema.Types.ObjectId, ref: "RiceBuyingArea" }],
   },

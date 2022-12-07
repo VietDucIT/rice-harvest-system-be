@@ -9,6 +9,5 @@ router.get("/check", ricePriceController.checkToUpdate);
 // router.get("/add-old-prices", ricePriceController.addOldPrices);
 router.get("/", ricePriceController.show);
 router.put("/update", ricePriceController.update);
-// router.get('/:slug', ricePriceController.show);
 
 module.exports = router;

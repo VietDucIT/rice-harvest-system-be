@@ -1,10 +1,8 @@
-# JUST EXTRA CODE
-
 from pandas import read_csv
 from matplotlib import pyplot
 
 ### Step 1: Overview dataset
-# series = read_csv('src/data/mock_data.csv', header=0, index_col=0)
+# series = read_csv('src/data/om18.csv', header=0, index_col=0)
 # print(series.head())
 # series.plot()
 # pyplot.grid()
@@ -15,7 +13,7 @@ from matplotlib import pyplot
 ## Option 2.1: lag_plot()
 ## Due to the same value, many point is in the same position
 # from pandas.plotting import lag_plot
-# series = read_csv('src/data/mock_data.csv', header=0, index_col=0)
+# series = read_csv('src/data/om18.csv', header=0, index_col=0)
 # lag_plot(series)
 # pyplot.show()
 
@@ -23,7 +21,7 @@ from matplotlib import pyplot
 ## Return a good result for using Autoregressive Model
 # from pandas import DataFrame
 # from pandas import concat
-# series = read_csv('src/data/mock_data.csv', header=0, index_col=0)
+# series = read_csv('src/data/om18.csv', header=0, index_col=0)
 # values = DataFrame(series.values)
 # dataframe = concat([values.shift(1), values], axis=1)
 # dataframe.columns = ['t-1', 't']
@@ -32,13 +30,13 @@ from matplotlib import pyplot
 
 ## Option 2.3: autoregresion_lot()
 # from pandas.plotting import autocorrelation_plot
-# series = read_csv('src/data/mock_data.csv', header=0, index_col=0)
+# series = read_csv('src/data/om18.csv', header=0, index_col=0)
 # autocorrelation_plot(series)
 # pyplot.show()
 
 ## Option 2.4: plot_acf()
 # from statsmodels.graphics.tsaplots import plot_acf
-# series = read_csv('src/data/mock_data.csv', header=0, index_col=0)
+# series = read_csv('src/data/om18.csv', header=0, index_col=0)
 # plot_acf(series, lags=60)
 # pyplot.show()
 
@@ -48,7 +46,7 @@ from matplotlib import pyplot
 # from pandas import DataFrame
 # from pandas import concat
 # from sklearn.metrics import mean_squared_error
-# series = read_csv('src/data/mock_data.csv', header=0, index_col=0)
+# series = read_csv('src/data/om18.csv', header=0, index_col=0)
 ## create lagged dataset
 # values = DataFrame(series.values)
 # dataframe = concat([values.shift(1), values], axis=1)

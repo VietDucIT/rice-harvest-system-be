@@ -43,12 +43,11 @@ class SuggestToBuyController {
 
   // [POST] /suggest-to-buy/
   add(req, res) {
-    // res.json(req.body);
     const suggestData = Object.assign(req.body);
     // console.log("Request Add Suggest To Buy: ", suggestData);
     let suggestToBuy = new SuggestToBuy({
       ...suggestData,
-      traderId: new ObjectId(suggestData.traderId), // OR idTrader
+      traderId: new ObjectId(suggestData.traderId),
     });
     // console.log("Suggest To Buy: ", suggestToBuy);
 
@@ -65,7 +64,6 @@ class SuggestToBuyController {
 
   // [PUT] /suggest-to-buy/:id
   modify(req, res) {
-    // res.json(req.body);
     SuggestToBuy.updateOne({ _id: req.params.id }, req.body)
       .then(() => {
         res.sendStatus(200).end();
@@ -78,7 +76,6 @@ class SuggestToBuyController {
 
   // [DELETE] /suggest-to-buy/:id
   delete(req, res) {
-    // res.json(req.body);
     // console.log("Request Delete Suggest To Buy: ", req.params);
     SuggestToBuy.deleteOne({ _id: req.params.id })
       .then(() => {

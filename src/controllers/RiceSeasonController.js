@@ -64,18 +64,12 @@ class RiceSeasonController {
 
   // [POST] /rice-season/
   add(req, res) {
-    // res.json(req.body);
-    // JUST A TEMPORARY SOLUTION, WILL REMOVE IF FINDING A BETTER ONE
     const riceSeasonData = Object.assign(req.body);
     // console.log("Request Add Rice Season: ", riceSeasonData);
     let riceSeason = new RiceSeason({
       ...riceSeasonData,
       farmerId: new ObjectId(riceSeasonData.farmerId),
     });
-    // RIGHT SOLUTION, BUT DIFFICULT TO GET DATA FROM OTHER COLLECTIONS
-    // const riceSeason = new RiceSeason(req.body);
-
-    // console.log("Rice Season: ", riceSeason);
 
     riceSeason
       .save()
@@ -90,7 +84,6 @@ class RiceSeasonController {
 
   // [PUT] /rice-season/:id
   modify(req, res) {
-    // res.json(req.body);
     RiceSeason.updateOne({ _id: req.params.id }, req.body)
       .then(() => {
         res.sendStatus(200).end();
@@ -103,7 +96,6 @@ class RiceSeasonController {
 
   // [DELETE] /rice-season/:id
   delete(req, res) {
-    // res.json(req.body);
     // console.log("Request Delete Rice Season: ", req.params);
     RiceSeason.deleteOne({ _id: req.params.id })
       .then(() => {

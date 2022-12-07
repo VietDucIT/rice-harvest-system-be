@@ -17,7 +17,6 @@ const Farmer = new Schema(
     role: { type: Number, required: true },
     phone: { type: String, required: true }, // userName
     password: { type: String, required: true },
-    // avatar: { type: String, required: true },
 
     // Embedded Documents
     // riceFields: [{ type: Schema.Types.ObjectId, ref: "RiceField" }],

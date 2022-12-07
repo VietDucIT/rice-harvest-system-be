@@ -8,7 +8,7 @@ class ContactController {
   // [GET] /contact/user/:idUser
   showList(req, res) {
     // console.log("Get Contact List: ", req.params);
-    Contact.find({ idUser: new ObjectId(req.params.idUser) }) // OR idFarmer OR idTrader
+    Contact.find({ idUser: new ObjectId(req.params.idUser) })
       .then((contacts) => {
         res.json(contacts).end();
       })
@@ -60,7 +60,6 @@ class ContactController {
           },
         },
       ],
-      // normalizedName: { $regex: new RegExp(normalizedSearchedName, "i") },
     })
       .then((contacts) => {
         res.json(contacts).end();
@@ -94,8 +93,6 @@ class ContactController {
       userNickname2: contactData.nickname,
       userNormalizedName2: contactData.normalizedName,
       userNormalizedNickname2: contactData.normalizedNickname,
-      // farmerId: new ObjectId(contactData.farmerId), // OR idFarmer
-      // traderId: new ObjectId(contactData.traderId), // OR idTrader
     });
     // console.log("Contact: ", contact);
 
@@ -110,22 +107,8 @@ class ContactController {
       });
   }
 
-  // [PUT] /contact/:id
-  // modify(req, res) {
-  //   // res.json(req.body);
-  //   Contact.updateOne({ _id: req.params.id }, req.body)
-  //     .then(() => {
-  //       res.sendStatus(200).end();
-  //     })
-  //     .catch((err) => {
-  //       res.status(500).end();
-  //       console.log(err);
-  //     });
-  // }
-
   // [DELETE] /contact/:id
   delete(req, res) {
-    // res.json(req.body);
     // console.log("Request Delete Contact: ", req.params);
     Contact.deleteOne({ _id: req.params.id })
       .then(() => {

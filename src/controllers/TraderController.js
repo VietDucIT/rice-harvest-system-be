@@ -4,8 +4,6 @@ const User = require("../models/User");
 const normalizeVietnamese = require("../services/normalizeVietnamese");
 
 class TraderController {
-  // INHERITED ALL CONTROLLERS OF USER ???
-
   // [GET] /trader/list-by-name
   showByName(req, res) {
     // console.log("Get Trader List by Name: ", req.params);

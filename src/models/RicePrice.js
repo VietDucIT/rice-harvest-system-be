@@ -8,9 +8,6 @@ const RicePrice = new Schema(
     price: { type: String },
     average: { type: Number },
     date: { type: String },
-    // isDeleted: { type: Boolean },
-
-    // riceId: { type: Schema.Types.ObjectId, ref: "Rice" },
   },
   {
     timestamps: true, // create 2 fields "createdAt" and "updatedAt" automatically

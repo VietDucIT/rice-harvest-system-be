@@ -12,6 +12,5 @@ router.get("/:id", suggestToBuyController.show);
 router.post("/", suggestToBuyController.add);
 router.put("/:id", suggestToBuyController.modify);
 router.delete("/:id", suggestToBuyController.delete);
-// router.get('/:slug', suggestToBuyController.show);
 
 module.exports = router;

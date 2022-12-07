@@ -9,6 +9,5 @@ router.get("/:id", riceSeasonController.showOne);
 router.post("/", riceSeasonController.add);
 router.put("/:id", riceSeasonController.modify);
 router.delete("/:id", riceSeasonController.delete);
-// router.get('/:slug', riceSeasonController.show);
 
 module.exports = router;

@@ -10,6 +10,5 @@ router.get("/", riceFieldController.showAll);
 router.post("/", riceFieldController.add);
 router.put("/:id", riceFieldController.modify);
 router.delete("/:id", riceFieldController.delete);
-// router.get('/:slug', riceFieldController.show);
 
 module.exports = router;

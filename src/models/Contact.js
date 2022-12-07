@@ -13,8 +13,6 @@ const Contact = new Schema(
     userNormalizedNickname2: { type: String },
 
     status: { type: String },
-    // farmerId: { type: Schema.Types.ObjectId, ref: "Farmer" },
-    // traderId: { type: Schema.Types.ObjectId, ref: "Trader" },
   },
   {
     timestamps: true, // create 2 fields "createdAt" and "updatedAt" automatically

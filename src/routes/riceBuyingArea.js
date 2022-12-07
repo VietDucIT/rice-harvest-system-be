@@ -9,6 +9,5 @@ router.get("/:id", riceBuyingAreaController.showOne);
 router.post("/", riceBuyingAreaController.add);
 router.put("/:id", riceBuyingAreaController.modify);
 router.delete("/:id", riceBuyingAreaController.delete);
-// router.get('/:slug', riceBuyingAreaController.show);
 
 module.exports = router;

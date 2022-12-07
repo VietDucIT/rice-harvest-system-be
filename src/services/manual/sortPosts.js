@@ -1,4 +1,3 @@
-// NO NEED TO USE
 // To run: node ./src/services/manual/sortPosts.js
 const fs = require("fs");
 

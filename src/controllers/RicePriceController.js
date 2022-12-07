@@ -1,10 +1,8 @@
 const cheerio = require("cheerio");
 const request = require("request-promise");
 const fs = require("fs");
-const { ObjectId } = require("mongodb");
 
 const RicePrice = require("../models/RicePrice");
-const PredictionRicePrice = require("../models/PredictionRicePrice");
 
 const urlTopic = "https://congthuong.vn/chu-de/gia-lua-gao-hom-nay.topic";
 
@@ -39,55 +37,22 @@ class RiceController {
   // [GET] /rice-price/prediction
   predict(req, res) {
     console.log("Get prediction");
-
-    // METHOD 1: USING NODEJS   => A bit difficult and not beautiful
-    // const timeseries = require("timeseries-analysis");
-    // let ricePriceData = [];
-    // await RicePrice.find({ rice: "OM 18" })
-    //   .then((ricePrice) => {
-    //     // convert dd/mm/yyyy of String type to Date type
-    //     for (let item of ricePrice) {
-    //       let dateParts = item.date.split("/"); // date of format dd/mm/yyyy
-    //       // month is 0-based, that's why we need dataParts[1] - 1
-    //       item.date = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
-    //     }
-
-    //     // assign array ricePrice to ricePriceData
-    //     ricePriceData = ricePrice.slice(0);
-    //     // console.log(ricePriceData.length);
-    //   })
-    //   .catch((err) => {
-    //     console.log("Error: ", err);
-    //   });
-
-    // // Load the data
-    // let t = new timeseries.main(
-    //   timeseries.adapter.fromDB(ricePriceData, {
-    //     date: "date",
-    //     value: "average",
-    //   })
-    // );
-
-    // let chart_url = t.ma().chart();
-    // console.log(chart_url);
-
-    // res.sendStatus(200).end();
-
-    // METHOD 2: USING PYTHON
-    // Method 2.1: Using spawn
+    // Method 1: Using spawn
     var spawn = require("child_process").spawn;
-    var process = spawn("python", ["src/services/predictRicePrice.py"]);
+    var process = spawn("python", [
+      "src/services/predictRicePriceWithArima.py",
+    ]);
     process.stdout.on("data", (data) => {
       res.send(data).end();
     });
 
-    // Method 2.2: Using PythonShell
+    // Method 2: Using PythonShell
     // let { PythonShell } = require("python-shell");
     // var options = {
     //   // scriptPath: "src/services/",
     //   args: [req.query.firstname, req.query.lastname],
     // };
-    // PythonShell.run("src/services/process.py", options, function (err, data) {
+    // PythonShell.run("src/services/predictRicePriceWithArima.py", options, function (err, data) {
     //   if (err) {
     //     console.log(err);
     //     res.send(err).end();
@@ -96,16 +61,6 @@ class RiceController {
     //     res.send(data.toString()).end();
     //   }
     // });
-
-    // PredictionRicePrice.find({})
-    //   .then((rice) => {
-    //     // console.log(rice);
-    //     res.json(rice).end();
-    //   })
-    //   .catch((err) => {
-    //     res.status(500).end();
-    //     console.log(err);
-    //   });
   }
 
   // [GET] /rice-price/check
@@ -132,7 +87,7 @@ class RiceController {
       } else {
         try {
           const urlTodayPost = await getTodayPost();
-          console.log("Need to update Rice Price.");
+          console.log("Need to update Rice Price.", urlTodayPost);
           res.send(true).end();
         } catch (error) {
           console.log("There's no today's post.", error);
@@ -187,7 +142,8 @@ class RiceController {
 
   // [GET] /rice-price/add-old-prices
   addOldPrices(req, res) {
-    let postArray = require("../data/posts.json");
+    // let postArray = require("../data/posts.json");
+    let postArray = [];
 
     try {
       for (let post of postArray) {
@@ -199,7 +155,6 @@ class RiceController {
             const datetime = $(".article-date").text();
             const index = datetime.indexOf(", ") + 2;
             const date = datetime.slice(index, index + 10);
-            // console.log(date);
 
             RicePrice.countDocuments({ date: date }, function (err, count) {
               if (count == 0) {
@@ -226,7 +181,7 @@ class RiceController {
 
                   // save to database
                   const excludeRices = ["Tấm khô IR 504", "Cám khô IR 504"];
-                  if (!excludeRices.includes(rice)) {
+                  if (rice && !excludeRices.includes(rice)) {
                     const ricePrice = new RicePrice({
                       rice,
                       price,
@@ -290,32 +245,17 @@ class RiceController {
 
   // [PUT] /rice-price/update
   async update(req, res) {
-    // delete all data in Rice Price collection
-    // await RicePrice.updateMany({}, { isDeleted: true });
-
     try {
       const urlTodayPost = await getTodayPost();
       console.log("Today's post: ", urlTodayPost);
       await request(urlTodayPost, (error, response, html) => {
         if (!error && response.statusCode == 200) {
           const $ = cheerio.load(html);
-          // let data = "";
-
-          // const columnDelimiter = ",";
-          // const lineDelimiter = "\n";
-          // data +=
-          //   "Date" +
-          //   columnDelimiter +
-          //   "Average" +
-          //   columnDelimiter +
-          //   "Rice" +
-          //   lineDelimiter;
 
           // get DATE of the post
           const datetime = $(".article-date").text();
           const index = datetime.indexOf(", ") + 2;
           const date = datetime.slice(index, index + 10);
-          // console.log(date);
 
           $(".__MASTERCMS_TABLE_DATA tr").first().remove(); // remove heading of table
           $(".__MASTERCMS_TABLE_DATA tr").each((index, el) => {

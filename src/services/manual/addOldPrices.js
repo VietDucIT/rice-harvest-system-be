@@ -4,7 +4,8 @@ const request = require("request-promise");
 
 const RicePrice = require("../../models/RicePrice");
 
-const postArray = require("../../data/posts.json");
+// const postArray = require("../../data/posts.json");
+const postArray = [];
 
 try {
   for (let post of postArray) {
@@ -43,14 +44,17 @@ try {
               }
 
               // save to database
-              const ricePrice = new RicePrice({
-                rice,
-                price,
-                average,
-                date,
-              });
-              console.log(ricePrice);
-              ricePrice.save();
+              const excludeRices = ["Tấm khô IR 504", "Cám khô IR 504"];
+              if (rice && !excludeRices.includes(rice)) {
+                const ricePrice = new RicePrice({
+                  rice,
+                  price,
+                  average,
+                  date,
+                });
+                console.log(ricePrice);
+                ricePrice.save();
+              }
             });
           }
         });
