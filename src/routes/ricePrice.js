@@ -4,6 +4,7 @@ const router = express.Router();
 const ricePriceController = require("../controllers/RicePriceController");
 
 router.get("/prediction", ricePriceController.predict);
+router.get("/history", ricePriceController.getHistory);
 router.get("/check", ricePriceController.checkToUpdate);
 // router.get("/add-old-posts", ricePriceController.addOldPosts);
 // router.get("/add-old-prices", ricePriceController.addOldPrices);

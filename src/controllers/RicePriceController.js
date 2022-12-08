@@ -4,6 +4,8 @@ const fs = require("fs");
 
 const RicePrice = require("../models/RicePrice");
 
+const stringifyDate = require("../services/stringifyDate");
+
 const urlTopic = "https://congthuong.vn/chu-de/gia-lua-gao-hom-nay.topic";
 
 // get today's post
@@ -37,10 +39,11 @@ class RiceController {
   // [GET] /rice-price/prediction
   predict(req, res) {
     console.log("Get prediction");
-    // Method 1: Using spawn
+    // Method 1: Using child_process.spawn
     var spawn = require("child_process").spawn;
     var process = spawn("python", [
       "src/services/predictRicePriceWithArima.py",
+      // "src/services/testPython.py",
     ]);
     process.stdout.on("data", (data) => {
       res.send(data).end();
@@ -48,19 +51,64 @@ class RiceController {
 
     // Method 2: Using PythonShell
     // let { PythonShell } = require("python-shell");
-    // var options = {
-    //   // scriptPath: "src/services/",
-    //   args: [req.query.firstname, req.query.lastname],
-    // };
-    // PythonShell.run("src/services/predictRicePriceWithArima.py", options, function (err, data) {
-    //   if (err) {
-    //     console.log(err);
-    //     res.send(err).end();
-    //   } else {
-    //     console.log(data.toString());
-    //     res.send(data.toString()).end();
+    // let options = {};
+    // PythonShell.run(
+    //   "src/services/testPython.py",
+    //   options,
+    //   function (err, data) {
+    //     if (err) {
+    //       console.log(err);
+    //       res.send(err).end();
+    //     } else {
+    //       console.log(data.toString());
+    //       res.send(data.toString()).end();
+    //     }
     //   }
-    // });
+    // );
+  }
+
+  // [GET] /rice-price/history
+  getHistory(req, res) {
+    const today = stringifyDate(new Date());
+    const yesterday = stringifyDate(new Date(Date.now() - 86400000)); // 24*60*60*1000
+    const preYesterday = stringifyDate(new Date(Date.now() - 86400000 * 2));
+    // console.log(preYesterday, yesterday, today);
+
+    // name descrising (Z -> A), date increasing
+    const sortRices = (a, b) => {
+      const dateA = new Date(
+        Number(a.date.slice(6, 10)),
+        Number(a.date.slice(3, 5)),
+        Number(a.date.slice(0, 2))
+      );
+      const dateB = new Date(
+        Number(b.date.slice(6, 10)),
+        Number(b.date.slice(3, 5)),
+        Number(b.date.slice(0, 2))
+      );
+
+      if (a.rice.localeCompare(b.rice) > 0) return -1;
+      else if (a.rice.localeCompare(b.rice) < 0) return 1;
+      else return dateA - dateB;
+    };
+
+    RicePrice.find({
+      date: { $in: [preYesterday, yesterday, today] },
+      rice: { $in: ["OM 5451", "OM 18", "IR 504", "Đài thơm 8"] },
+    })
+      .then((rices) => {
+        const rices2 = rices.sort(sortRices);
+        // console.log("Rices after sorting: \n", rices2);
+        let historyArray = [];
+        for (let rice of rices2) {
+          historyArray.push(rice.average);
+        }
+        res.send(historyArray).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
   }
 
   // [GET] /rice-price/check
@@ -207,23 +255,8 @@ class RiceController {
 
   // [GET] /rice-price/
   show(req, res) {
-    // today
-    const currentTime = new Date();
-    const yyyy = currentTime.getFullYear();
-    let mm = currentTime.getMonth() + 1;
-    let dd = currentTime.getDate();
-    if (dd < 10) dd = "0" + dd;
-    if (mm < 10) mm = "0" + mm;
-    const today = dd + "/" + mm + "/" + yyyy;
-
-    // yesterday
-    const yesterdayTime = new Date(Date.now() - 86400000); // 24*60*60*1000
-    const yyyy1 = yesterdayTime.getFullYear();
-    let mm1 = yesterdayTime.getMonth() + 1;
-    let dd1 = yesterdayTime.getDate();
-    if (dd1 < 10) dd1 = "0" + dd1;
-    if (mm1 < 10) mm1 = "0" + mm1;
-    const yesterday = dd1 + "/" + mm1 + "/" + yyyy1;
+    const today = stringifyDate(new Date());
+    const yesterday = stringifyDate(new Date(Date.now() - 86400000));
 
     RicePrice.find({ date: { $in: [today, yesterday] } })
       .then((rices) => {
