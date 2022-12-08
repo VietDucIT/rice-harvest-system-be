@@ -8,7 +8,6 @@ const SuggestToBuy = new Schema(
     suggestedTimeEnd: { type: Date, required: true },
     description: { type: String },
     status: { type: String },
-    traderId: { type: String },
 
     // Field of season
     seasonId: { type: Schema.Types.ObjectId, ref: "RiceSeason" },
@@ -25,8 +24,9 @@ const SuggestToBuy = new Schema(
     seasonTimeEnd: { type: String },
     seasonTimeStart: { type: String },
 
-    riceSeasonId: { type: Schema.Types.ObjectId, ref: "RiceSeason" },
     traderId: { type: Schema.Types.ObjectId, ref: "Trader" },
+    traderName: { type: String },
+    traderNickname: { type: String },
   },
   {
     timestamps: true, // create 2 fields "createdAt" and "updatedAt" automatically
