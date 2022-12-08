@@ -2,12 +2,47 @@ const { ObjectId } = require("mongodb");
 
 const SuggestToBuy = require("../models/SuggestToBuy");
 
+const normalizeVietnamese = require("../services/normalizeVietnamese");
+
 class SuggestToBuyController {
   // [GET] /suggest-to-buy/trader/:idTrader
   showList(req, res) {
     // console.log("Get Suggest To Buy List by Trader: ", req.params);
     SuggestToBuy.find({ traderId: new ObjectId(req.params.idTrader) })
       .then((suggestToBuys) => {
+        res.json(suggestToBuys).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
+
+  // [GET] /suggest-to-buy/farmer
+  findByFarmerName(req, res) {
+    // console.log("Get Suggest To Buy List by Farmer's name: ", req.query);
+    let farmerName = req.query.farmerName;
+    farmerName = farmerName.trim().replace(/\s+/g, " "); // remove abandoned whitespaces
+    let normalizedFarmerName = normalizeVietnamese(farmerName);
+    // console.log(farmerName, normalizedFarmerName);
+
+    SuggestToBuy.find({
+      traderId: new ObjectId(req.query.idTrader),
+      $or: [
+        {
+          normalizedSeasonFarmerName: {
+            $regex: new RegExp(normalizedFarmerName, "i"),
+          },
+        },
+        {
+          normalizedSeasonFarmerNickname: {
+            $regex: new RegExp(normalizedFarmerName, "i"),
+          },
+        },
+      ],
+    })
+      .then((suggestToBuys) => {
+        console.log("Suggest To Buy list by Farmer's name: \n", suggestToBuys);
         res.json(suggestToBuys).end();
       })
       .catch((err) => {
@@ -48,6 +83,12 @@ class SuggestToBuyController {
     let suggestToBuy = new SuggestToBuy({
       ...suggestData,
       traderId: new ObjectId(suggestData.traderId),
+      normalizedSeasonFarmerName: normalizeVietnamese(
+        suggestData.seasonFarmerName
+      ),
+      normalizedSeasonFarmerNickname: normalizeVietnamese(
+        suggestData.seasonFarmerNickname
+      ),
     });
     // console.log("Suggest To Buy: ", suggestToBuy);
 

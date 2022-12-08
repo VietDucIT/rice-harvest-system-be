@@ -4,6 +4,7 @@ const router = express.Router();
 const suggestToBuyController = require("../controllers/SuggestToBuyController");
 
 router.get("/trader/:idTrader", suggestToBuyController.showList);
+router.get("/farmer", suggestToBuyController.findByFarmerName);
 router.get(
   "/season/:idRiceSeason",
   suggestToBuyController.showListForRiceSeason
