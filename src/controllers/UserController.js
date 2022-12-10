@@ -35,12 +35,21 @@ class UserController {
   // [POST] /user/login
   logIn(req, res) {
     // console.log("Request from: ", req.ip);
+
     User.findOne({
       phone: req.body.phone,
-      password: req.body.password,
+      // password: req.body.password,
     })
       .then((user) => {
-        res.json(user).end();
+        const hash = crypto
+          .pbkdf2Sync(req.body.password, user.salt, 1000, 64, "sha512")
+          .toString("hex");
+        if (user.password === hash) {
+          console.log("Login: ", user);
+          res.json(user).end();
+        } else {
+          res.sendStatus(500).end();
+        }
       })
       .catch((err) => {
         res.sendStatus(500).end();
@@ -50,11 +59,19 @@ class UserController {
 
   // [POST] /user/
   add(req, res) {
-    const user = new User(req.body);
-    console.log("User BE: ", user);
+    let user = req.body;
+    const salt = crypto.randomBytes(16).toString("hex");
 
-    user.normalizedName = normalizeVietnamese(user.name);
-    user.normalizedNickname = normalizeVietnamese(user.nickname);
+    user = new User({
+      ...user,
+      normalizedName: normalizeVietnamese(user.name),
+      normalizedNickname: normalizeVietnamese(user.nickname),
+      salt,
+      password: crypto
+        .pbkdf2Sync(user.password, salt, 1000, 64, "sha512")
+        .toString("hex"),
+    });
+    console.log("User: ", user);
 
     user
       .save()
@@ -69,7 +86,14 @@ class UserController {
 
   // [PUT] /user/:id
   modify(req, res) {
-    User.updateOne({ _id: req.params.id }, req.body)
+    let user = req.body;
+    user = {
+      ...user,
+      password: crypto
+        .pbkdf2Sync(user.password, user.salt, 1000, 64, "sha512")
+        .toString("hex"),
+    };
+    User.updateOne({ _id: req.params.id }, user)
       .then(() => {
         res.sendStatus(200).end();
       })

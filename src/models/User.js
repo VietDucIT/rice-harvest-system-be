@@ -6,7 +6,7 @@ const User = new Schema(
   {
     name: { type: String, required: true },
     nickname: { type: String },
-    normalizedName: { type: String },
+    normalizedName: { type: String, required: true },
     normalizedNickname: { type: String },
     gender: { type: Number, required: true },
     birthYear: { type: String },
@@ -17,6 +17,7 @@ const User = new Schema(
     role: { type: Number, required: true },
     phone: { type: String, required: true }, // userName
     password: { type: String, required: true },
+    salt: { type: String, required: true },
   },
   {
     timestamps: true, // create 2 fields "createdAt" and "updatedAt" automatically
