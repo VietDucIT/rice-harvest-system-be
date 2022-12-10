@@ -39,14 +39,17 @@ class FarmerController {
 
   // [GET] /farmer/find-by-address
   findByAddress(req, res) {
-    // console.log("Find Farmer by Address: ", req.query);
-    const address = req.query.address;
+    const address = req.query;
+    // console.log("Find Farmer by Address: ", address);
     let filterObject = { province: address.province, role: 0 };
     if (address.town) filterObject.town = address.town;
     if (address.commune) filterObject.commune = address.commune;
     if (address.village) filterObject.village = address.village;
+    // console.log("Finding Condition: ", filterObject);
+
     User.find(filterObject)
       .then((farmers) => {
+        // console.log(farmers);
         res.json(farmers).end();
       })
       .catch((err) => {
