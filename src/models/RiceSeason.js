@@ -27,7 +27,6 @@ const RiceSeason = new Schema(
 
     riceFieldId: { type: Schema.Types.ObjectId, ref: "RiceField" },
     riceId: { type: Schema.Types.ObjectId, ref: "Rice" },
-
     farmerId: { type: Schema.Types.ObjectId, ref: "Farmer" },
   },
   {

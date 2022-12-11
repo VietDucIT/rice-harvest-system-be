@@ -59,16 +59,16 @@ class UserController {
 
   // [POST] /user/
   add(req, res) {
-    let user = req.body;
+    const userData = Object.assign(req.body);
     const salt = crypto.randomBytes(16).toString("hex");
 
-    user = new User({
-      ...user,
-      normalizedName: normalizeVietnamese(user.name),
-      normalizedNickname: normalizeVietnamese(user.nickname),
+    let user = new User({
+      ...userData,
+      normalizedName: normalizeVietnamese(userData.name),
+      normalizedNickname: normalizeVietnamese(userData.nickname),
       salt,
       password: crypto
-        .pbkdf2Sync(user.password, salt, 1000, 64, "sha512")
+        .pbkdf2Sync(userData.password, salt, 1000, 64, "sha512")
         .toString("hex"),
     });
     console.log("User: ", user);
@@ -86,13 +86,14 @@ class UserController {
 
   // [PUT] /user/:id
   modify(req, res) {
-    let user = req.body;
-    user = {
-      ...user,
+    const userData = Object.assign(req.body);
+    let user = {
+      ...userData,
       password: crypto
-        .pbkdf2Sync(user.password, user.salt, 1000, 64, "sha512")
+        .pbkdf2Sync(userData.password, userData.salt, 1000, 64, "sha512")
         .toString("hex"),
     };
+
     User.updateOne({ _id: req.params.id }, user)
       .then(() => {
         res.sendStatus(200).end();

@@ -30,15 +30,12 @@ class NotificationController {
 
   // [POST] /notification/
   add(req, res) {
-    // res.json(req.body);
     const notificationData = Object.assign(req.body);
     // console.log("Request Add Notification: ", notificationData);
     let notification = new Notification({
       ...notificationData,
       userId: new ObjectId(notificationData.idUser),
     });
-    // const notification = new Notification(req.body);
-    // notification.userId = new ObjectId(notification.idUser);
     // console.log("Notification: ", notification);
 
     notification
@@ -55,7 +52,6 @@ class NotificationController {
   // [PUT] /notification/:id
   // just set status Read/Unread
   modify(req, res) {
-    // res.json(req.body);
     Notification.updateOne({ _id: req.params.id }, req.body)
       .then(() => {
         res.sendStatus(200).end();
@@ -68,7 +64,6 @@ class NotificationController {
 
   // [DELETE] /notification/:id
   delete(req, res) {
-    // res.json(req.body);
     // console.log("Request Delete Notification: ", req.params);
     Notification.deleteOne({ _id: req.params.id })
       .then(() => {

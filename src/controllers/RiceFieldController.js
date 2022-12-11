@@ -69,7 +69,6 @@ class RiceFieldController {
 
   // [POST] /rice-field/
   add(req, res) {
-    // res.json(req.body);
     const fieldData = Object.assign(req.body);
     // console.log("Request Add Rice Field: ", fieldData);
     let riceField = new RiceField({
@@ -91,7 +90,6 @@ class RiceFieldController {
 
   // [PUT] /rice-field/:id
   modify(req, res) {
-    // res.json(req.body);
     RiceField.updateOne({ _id: req.params.id }, req.body)
       .then(() => {
         res.sendStatus(200).end();
@@ -104,7 +102,6 @@ class RiceFieldController {
 
   // [DELETE] /rice-field/:id
   delete(req, res) {
-    // res.json(req.body);
     // console.log("Request Delete Rice Field: ", req.params);
     RiceField.deleteOne({ _id: req.params.id })
       .then(() => {

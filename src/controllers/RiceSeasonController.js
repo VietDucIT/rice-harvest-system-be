@@ -62,12 +62,27 @@ class RiceSeasonController {
       });
   }
 
+  // [GET] /rice-season/current-status/:idRiceField
+  getCurrentStatus(req, res) {
+    RiceSeason.find({ riceFieldId: req.params.idRiceField })
+      .then(async (riceSeasons) => {
+        let sortedArray = riceSeasons.sort((a, b) => b.createdAt - a.createdAt);
+        // console.log("Rice Season Array sorted: \n", sortedArray);
+        res.json(sortedArray[0].currentState).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
+
   // [POST] /rice-season/
   add(req, res) {
     const riceSeasonData = Object.assign(req.body);
     // console.log("Request Add Rice Season: ", riceSeasonData);
     let riceSeason = new RiceSeason({
       ...riceSeasonData,
+      riceFieldId: new ObjectId(riceSeasonData.riceFieldId),
       farmerId: new ObjectId(riceSeasonData.farmerId),
     });
 
@@ -84,7 +99,11 @@ class RiceSeasonController {
 
   // [PUT] /rice-season/:id
   modify(req, res) {
-    RiceSeason.updateOne({ _id: req.params.id }, req.body)
+    let riceSeason = Object.assign(req.body);
+    RiceSeason.updateOne(
+      { _id: req.params.id },
+      { ...riceSeason, riceFieldId: new ObjectId(riceSeason.riceFieldId) }
+    )
       .then(() => {
         res.sendStatus(200).end();
       })

@@ -55,9 +55,8 @@ class RiceBuyingAreaController {
 
   // [POST] /rice-buying-area/
   add(req, res) {
-    // res.json(req.body);
     const areaData = Object.assign(req.body);
-    console.log("Request add Rice Buying Area: ", areaData);
+    // console.log("Request add Rice Buying Area: ", areaData);
     let riceBuyingArea = new RiceBuyingArea({
       ...areaData,
       traderId: new ObjectId(areaData.traderId),
@@ -78,7 +77,6 @@ class RiceBuyingAreaController {
 
   // [PUT] /rice-buying-area/:id
   modify(req, res) {
-    // res.json(req.body);
     RiceBuyingArea.updateOne({ _id: req.params.id }, req.body)
       .then(() => {
         res.sendStatus(200).end();
@@ -91,7 +89,6 @@ class RiceBuyingAreaController {
 
   // [DELETE] /rice-buying-area/:id
   delete(req, res) {
-    // res.json(req.body);
     // console.log("Request Delete Rice Buying Area: ", req.params);
     RiceBuyingArea.deleteOne({ _id: req.params.id })
       .then(() => {
