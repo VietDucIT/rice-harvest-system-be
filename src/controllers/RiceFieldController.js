@@ -1,8 +1,18 @@
 const { ObjectId } = require("mongodb");
 
 const RiceField = require("../models/RiceField");
+const RiceSeason = require("../models/RiceSeason");
 
 const normalizeVietnamese = require("../services/normalizeVietnamese");
+
+const getCurrentStatus = async (idRiceField) => {
+  const riceSeasons = await RiceSeason.find({ riceFieldId: idRiceField });
+  riceSeasons.sort((a, b) => b.createdAt - a.createdAt);
+  if (riceSeasons.length > 0) {
+    // console.log(riceSeasons[0]?.currentState);
+    return riceSeasons[0]?.currentState;
+  }
+};
 
 class RiceFieldController {
   // [GET] /rice-field/find-by-name
@@ -57,9 +67,15 @@ class RiceFieldController {
   showAll(req, res) {
     // console.log("Get all Rice Field: ", req.params);
     RiceField.find()
-      .then((riceFields) => {
+      .then(async (riceFields) => {
         // console.log("Show all Rice Fileds: ", riceFields);
-        res.json(riceFields).end();
+        let riceFieldList = [];
+        for (let field of riceFields) {
+          let currentStatus = await getCurrentStatus(field._doc._id);
+          riceFieldList.push({ ...field._doc, currentStatus: currentStatus });
+        }
+        // console.log("Show all Rice Fileds: ", riceFieldList);
+        res.json(riceFieldList).end();
       })
       .catch((err) => {
         res.status(500).end();

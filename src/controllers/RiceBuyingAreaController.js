@@ -18,7 +18,7 @@ class RiceBuyingAreaController {
       normalizedName: { $regex: new RegExp(normalizedSearchedName, "i") },
     })
       .then((riceBuyingAreas) => {
-        console.log("From finding Rice Buying Area by Name: ", riceBuyingAreas);
+        // console.log("From finding Rice Buying Area by Name: ", riceBuyingAreas);
         res.json(riceBuyingAreas).end();
       })
       .catch((err) => {
@@ -29,10 +29,10 @@ class RiceBuyingAreaController {
 
   // [GET] /rice-buying-area/trader/:idTrader
   showList(req, res) {
-    console.log("Get Rice Buying Area List: ", req.params);
+    // console.log("Get Rice Buying Area List: ", req.params);
     RiceBuyingArea.find({ traderId: new ObjectId(req.params.idTrader) })
       .then((riceBuyingAreas) => {
-        console.log(riceBuyingAreas);
+        // console.log(riceBuyingAreas);
         res.json(riceBuyingAreas).end();
       })
       .catch((err) => {
