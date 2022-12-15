@@ -5,13 +5,11 @@ const Schema = mongoose.Schema;
 const Contact = new Schema(
   {
     userId: { type: Schema.Types.ObjectId, ref: "User" },
-
     userId2: { type: Schema.Types.ObjectId, ref: "User" },
     userName2: { type: String },
     userNickname2: { type: String },
     userNormalizedName2: { type: String },
     userNormalizedNickname2: { type: String },
-
     status: { type: String },
   },
   {

@@ -1,4 +1,3 @@
-// To run: node ./src/services/manual/addOldPrices.js
 const cheerio = require("cheerio");
 const request = require("request-promise");
 

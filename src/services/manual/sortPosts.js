@@ -1,4 +1,3 @@
-// To run: node ./src/services/manual/sortPosts.js
 const fs = require("fs");
 
 const postList = require("../../data/posts.json");
@@ -20,4 +19,4 @@ postList.sort((a, b) => {
 
 fs.writeFileSync("../../data/posts.json", JSON.stringify(postList));
 
-console.log("First post: ", postList[1]);
+// console.log("First post: ", postList[1]);

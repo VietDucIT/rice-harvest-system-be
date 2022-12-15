@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+// const SuggestToBuy = require("./SuggestToBuy");
+
 const RiceSeason = new Schema(
   {
     seasonName: { type: String, required: true },
@@ -11,19 +13,11 @@ const RiceSeason = new Schema(
     timeEnd: { type: Date },
     totalRice: { type: Number },
     description: { type: String },
-
     riceFieldName: { type: String },
     riceName: { type: String },
 
-    // suggestToBuys: [
-    //   {
-    //     traderId: { type: String, required: true },
-    //     suggestedPrice: { type: Number, required: true },
-    //     suggestedTimeEnd: { type: Date, required: true },
-    //     description: { type: String },
-    //     status: { type: String },
-    //   },
-    // ],
+    // Embedded Documents
+    // suggestToBuys: [SuggestToBuy],
 
     riceFieldId: { type: Schema.Types.ObjectId, ref: "RiceField" },
     riceId: { type: Schema.Types.ObjectId, ref: "Rice" },

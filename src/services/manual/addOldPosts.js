@@ -1,4 +1,3 @@
-// To run: node ./src/services/manual/addOldPosts.js
 const cheerio = require("cheerio");
 const request = require("request-promise");
 const fs = require("fs");
@@ -26,7 +25,6 @@ request(urlTopic, (error, response, html) => {
 
     $(".article").each((index, el) => {
       postLink = $(el).find(".article-link").attr("href");
-      // postTitle = $(el).find(".article-link").attr("title");
 
       if (
         postLink.includes(`https://congthuong.vn/gia-lua-gao-hom-nay`) &&

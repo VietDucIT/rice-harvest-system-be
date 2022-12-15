@@ -31,19 +31,26 @@ class TraderController {
       });
   }
 
-  // [GET] /trader/list-by-address
-  // village, commune, town, province
-  // showByAddress(req, res) {
-  //   // console.log("Get Trader List by Address: ", req.params);
-  //   Trader.find({ address: req.params.address })
-  //     .then((traders) => {
-  //       res.json(traders).end();
-  //     })
-  //     .catch((err) => {
-  //       res.status(500).end();
-  //       console.log(err);
-  //     });
-  // }
+  // [GET] /trader/find-by-address
+  findByAddress(req, res) {
+    const address = req.query;
+    // console.log("Find Trader by Address: ", address);
+    let filterObject = { province: address.province, role: 0 };
+    if (address.town) filterObject.town = address.town;
+    if (address.commune) filterObject.commune = address.commune;
+    if (address.village) filterObject.village = address.village;
+    // console.log("Finding Condition: ", filterObject);
+
+    User.find(filterObject)
+      .then((traders) => {
+        // console.log(traders);
+        res.json(traders).end();
+      })
+      .catch((err) => {
+        res.status(500).end();
+        console.log(err);
+      });
+  }
 }
 
 module.exports = new TraderController();

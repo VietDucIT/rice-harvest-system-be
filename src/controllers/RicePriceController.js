@@ -43,7 +43,6 @@ class RiceController {
     var spawn = require("child_process").spawn;
     var process = spawn("python", [
       "src/services/predictRicePriceWithArima.py",
-      // "src/services/testPython.py",
     ]);
     process.stdout.on("data", (data) => {
       res.send(data).end();
@@ -53,7 +52,7 @@ class RiceController {
     // let { PythonShell } = require("python-shell");
     // let options = {};
     // PythonShell.run(
-    //   "src/services/testPython.py",
+    //   "src/services/predictRicePriceWithArima.py",
     //   options,
     //   function (err, data) {
     //     if (err) {

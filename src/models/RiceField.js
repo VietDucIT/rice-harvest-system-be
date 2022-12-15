@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+// const RiceSeason = require("./RiceSeason");
+
 const RiceField = new Schema(
   {
     name: { type: String, required: true },
@@ -20,25 +22,8 @@ const RiceField = new Schema(
     y4: { type: Number, required: true },
     description: { type: String },
 
-    // seasons: [
-    //   {
-    //     name: { type: String, required: true },
-    //     rice: { type: String, required: true },
-    //     currentState: { type: String, required: true },
-    //     timeStart: { type: Date, required: true },
-    //     timeEnd: { type: Date },
-    //     totalRice: { type: Date },
-    //     suggestToBuys: [
-    //       {
-    //         traderId: { type: String, required: true },
-    //         suggestedPrice: { type: Number, required: true },
-    //         suggestedTimeEnd: { type: Date, required: true },
-    //         description: { type: String },
-    //         status: { type: String },
-    //       },
-    //     ],
-    //   },
-    // ],
+    // Embedded Documents
+    // riceSeasons: [RiceSeason],
 
     farmerId: { type: Schema.Types.ObjectId, ref: "Farmer" },
   },

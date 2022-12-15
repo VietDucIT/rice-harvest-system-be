@@ -8,3 +8,5 @@ $ python -m pip install --upgrade pip
 > use <DB_NAME>
 > db.<collection_name>.deleteMany({date: '20/11/2022'})
 
+> mongodump -d RICE_HARVEST_SYSTEM -o D:/LVTN/RICE_HARVEST_SYSTEM_DB
+> mongorestore -d RICE_HARVEST_SYSTEM D:/LVTN/RICE_HARVEST_SYSTEM_DB

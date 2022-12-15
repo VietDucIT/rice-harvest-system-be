@@ -15,7 +15,7 @@ const User = new Schema(
     town: { type: String, required: true },
     province: { type: String, required: true },
     role: { type: Number, required: true },
-    phone: { type: String, required: true }, // userName
+    phone: { type: String, required: true },
     password: { type: String, required: true },
     salt: { type: String, required: true },
   },

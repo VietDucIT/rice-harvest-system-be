@@ -5,7 +5,7 @@ const Bill = require("../models/Bill");
 class BillController {
   // [GET] /bill/user/:idUser
   showList(req, res) {
-    // console.log("Get Bill list for User: ", req.params);
+    // console.log("Get Bill List for User: ", req.params);
     Bill.find({ idUser: req.params.idUser })
       .then((bills) => {
         res.json(bills).end();
@@ -18,7 +18,7 @@ class BillController {
 
   // [GET] /bill/farmer/:idFarmer
   showListForFarmer(req, res) {
-    // console.log("Get Bill list for Farmer: ", req.params);
+    // console.log("Get Bill List for Farmer: ", req.params);
     Bill.find({ idFarmer: req.params.idFarmer })
       .then((bills) => {
         res.json(bills).end();
@@ -31,7 +31,7 @@ class BillController {
 
   // [GET] /bill/trader/:idTrader
   showListForTrader(req, res) {
-    // console.log("Get Bill list for Trader: ", req.params);
+    // console.log("Get Bill List for Trader: ", req.params);
     Bill.find({ idTrader: req.params.idTrader })
       .then((bills) => {
         res.json(bills).end();
@@ -44,7 +44,7 @@ class BillController {
 
   // [GET] /bill/rice-season/:idRiceSeason
   showListForRiceSeason(req, res) {
-    // console.log("Get Bill list for Rice Season: ", req.params);
+    // console.log("Get Bill List for Rice Season: ", req.params);
     Bill.find({ idRiceSeason: req.params.idRiceSeason })
       .then((bills) => {
         res.json(bills).end();
@@ -69,14 +69,11 @@ class BillController {
 
   // [POST] /bill/
   add(req, res) {
-    // const billData = Object.assign(req.body);
-    // let bill = new Bill({
-    //   ...billData,
-    //   suggestToBuyId: new ObjectId(billData.suggestToBuyId),
-    // });
-
-    const bill = new Bill(req.body);
-    // bill.suggestToBuyId = new ObjectId(bill.suggestToBuyId);
+    const billData = Object.assign(req.body);
+    let bill = new Bill({
+      ...billData,
+      suggestToBuyId: new ObjectId(billData.suggestToBuyId),
+    });
 
     bill
       .save()

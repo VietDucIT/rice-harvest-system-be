@@ -14,10 +14,6 @@ class FarmerController {
 
     User.find({
       $or: [
-        // { name: { $regex: new RegExp(searchedName, "i") } },
-        // { nickname: { $regex: new RegExp(searchedName, "i") } },
-        // { normalizedName: { $regex: new RegExp(searchedName, "i") } },
-        // { normalizedNickname: { $regex: new RegExp(searchedName, "i") } },
         { normalizedName: { $regex: new RegExp(normalizedSearchedName, "i") } },
         {
           normalizedNickname: {

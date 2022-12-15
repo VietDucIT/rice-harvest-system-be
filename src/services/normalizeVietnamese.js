@@ -1,13 +1,13 @@
 const normalizeVietnamese = (vietnameseText) => {
   const lowserCase = vietnameseText.toLowerCase().trim();
-  const replaceA = lowserCase.replace(/[áàảãạâấầẩẫậăắằẳẵặ]/g, "a");
-  const replaceD = replaceA.replace(/[dđ]/g, "d");
+  const replaceA = lowserCase.replace(/[áàảãạăắằẳẵặâấầẩẫậ]/g, "a");
+  const replaceD = replaceA.replace(/[đ]/g, "d");
   const replaceE = replaceD.replace(/[éèẻẽẹêếềểễệ]/g, "e");
   const replaceI = replaceE.replace(/[íìỉĩị]/g, "i");
-  const replaceY = replaceI.replace(/[ýỳỷỹỵ]/g, "y");
-  const replaceO = replaceY.replace(/[óòỏõọôốồổỗộơớờởỡợ]/g, "o");
+  const replaceO = replaceI.replace(/[óòỏõọôốồổỗộơớờởỡợ]/g, "o");
   const replaceU = replaceO.replace(/[úùủũụưứừửữự]/g, "u");
-  return replaceU;
+  const replaceY = replaceU.replace(/[ýỳỷỹỵ]/g, "y");
+  return replaceY;
 };
 
 module.exports = normalizeVietnamese;
